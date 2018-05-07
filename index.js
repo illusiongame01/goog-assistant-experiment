@@ -29,6 +29,12 @@ app.post('/', (req, res) => {
         agent.add(`I don't understand`)
         agent.add(`I am sorry. Can you repeat again`)
     }
+    
+     function suggestionInfo(agent) {
+        agent.add(`Please Select`)
+         agent.add(new Suggestion('Promotion'))
+        agent.add(new Suggestion('Ontop'))
+    }
 
     function sim2fly(agent) {
         agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
@@ -46,6 +52,7 @@ app.post('/', (req, res) => {
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('ir:roaming', sim2fly)
+    intentMap.set('Ontop-Promotion', suggestionInfo)
     
     agent.handleRequest(intentMap)
 })
