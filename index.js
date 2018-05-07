@@ -2,16 +2,38 @@ const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
-const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-const PORT = process.env.PORT || 4200
-
+// HTTP
+const http = require('http')
+const https = require('https');
 
 const app = express(bodyParser.json())
 
+
+
 app.use(bodyParser.json())
 
-app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+//app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+
+app.get('/', (request , response) => {
+
+   // https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {
+    https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {  
+  let data = '';
+  // A chunk of data has been recieved.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
+ 
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    console.log(JSON.parse(data).explanation);
+  });
+ 
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
+});
+})
 
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
@@ -22,62 +44,31 @@ app.post('/', (req, res) => {
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
-        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
+        agent.add(`welcome to my agent`)
     }
 
     function fallback(agent) {
         agent.add(`I don't understand`)
         agent.add(`I am sorry. Can you repeat again`)
     }
-    
-     function suggestionInfo(agent) {
-        agent.add(`Please Select`)
-         agent.add(new Suggestion('Promotion'))
-        agent.add(new Suggestion('Ontop'))
-    }
-
-    function sim2fly(agent) {
-        agent.add("อุ่นใจแนะนำ Sim 1 Fly ราคาประหยัดครับ")
-        agent.add(new Card({
-            title: `Sim 1 Fly`,
-            imageUrl: `https://110.49.202.87:8443/error/img/Expire_TH.png`,
-            text: `Sim 1 Fly โรมมิ่ง ราคาประหยัด`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-        }))
-        agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
-        agent.add(new Card({
-            title: `Sim 2 Fly`,
-            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
-            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-        }))
-        agent.add("อุ่นใจแนะนำ Sim 3 Fly ราคาประหยัดครับ")
-        agent.add(new Card({
-            title: `Sim 3 Fly`,
-            imageUrl: `https://110.49.202.87:8443/error/img/Expire_TH.png`,
-            text: `Sim 3 Fly โรมมิ่ง ราคาประหยัด`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-        }))
-    }
 
     let intentMap = new Map()
 
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('Ontop-Promotion', sim2fly)
-  
     
     agent.handleRequest(intentMap)
 })
 
-app.listen(PORT, (error) => {
+app.listen(4200, (error) => {
     if (error) {
         console.log(error)
     }
     else {
-        console.log(`listening at port ${PORT}`)
+        console.log("listening at port 4200")
     }
 })
+
+// HTTPS goes here :)
+
+
