@@ -65,7 +65,7 @@ app.post('/', (req, res) => {
     .end(function(res) {
         if (res.error) {
             console.log('GET error', res.error)
-            
+             agent.add("ไม่พบยอดเงินคงเหลือ")
         } else {
            // console.log('GET response', res.body)
           
