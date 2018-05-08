@@ -60,7 +60,8 @@ app.post('/', (req, res) => {
     }
 
     function sim2fly(agent) {
-    unirest.get("https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
+    agent.add("ตรวจสอบยอดเงินคงเหลือ")
+    unirest.get("https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
     .strictSSL(false)
     .end(function(res) {
         if (res.error) {
