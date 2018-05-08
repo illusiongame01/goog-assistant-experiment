@@ -2,35 +2,16 @@ const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
+const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-// HTTP
-const http = require('http')
-const https = require('https');
+const PORT = process.env.PORT || 4200
+
 
 const app = express(bodyParser.json())
 
-
-
 app.use(bodyParser.json())
 
-//app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
-
-  // https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {
-    https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {  
-  let data = '';
-  // A chunk of data has been recieved.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
- 
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    console.log(JSON.parse(data).balance);
-  });
- 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
-});
+app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
 
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
@@ -41,7 +22,7 @@ app.post('/', (req, res) => {
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
-        agent.add(`welcome to my agent`)
+        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
     }
 
     function fallback(agent) {
@@ -49,23 +30,35 @@ app.post('/', (req, res) => {
         agent.add(`I am sorry. Can you repeat again`)
     }
 
+    function sim2fly(agent) {
+        agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
+        agent.add(new Card({
+            title: `Sim 2 Fly`,
+            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
+            buttonText: `ดูข้อมูลเพิ่มเติม`,
+            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
+        }))
+    }
+
+    function onTopHandler(agent) {
+        agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
+    }
+
     let intentMap = new Map()
 
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
-    
+    intentMap.set('ir:roaming', sim2fly)
+    intentMap.set('on-top', onTopHandler)
     agent.handleRequest(intentMap)
 })
 
-app.listen(4200, (error) => {
+app.listen(PORT, (error) => {
     if (error) {
         console.log(error)
     }
     else {
-        console.log("listening at port 4200")
+        console.log(`listening at port ${PORT}`)
     }
 })
-
-// HTTPS goes here :)
-
-
