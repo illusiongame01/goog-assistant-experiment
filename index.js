@@ -60,6 +60,22 @@ app.post('/', (req, res) => {
     }
 
     function sim2fly(agent) {
+    unirest.get("https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
+    .strictSSL(false)
+    .end(function(res) {
+        if (res.error) {
+            console.log('GET error', res.error)
+            
+        } else {
+           // console.log('GET response', res.body)
+          
+                var data = res.body;
+                var data2 = JSON.parse(JSON.stringify(data));
+                console.log(data2.balance); 
+                agent.add("ยอดเงินคงเหลือ "+data2.balance)
+                  }
+             }   
+         ) 
         agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
         agent.add(new Card({
             title: `Sim 2 Fly`,
@@ -78,8 +94,7 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('ir:roaming', sim2fly)
-    intentMap.set('on-top', onTopHandler)
+    intentMap.set('Ontop-Promotion', sim2fly)
     agent.handleRequest(intentMap)
 })
 
