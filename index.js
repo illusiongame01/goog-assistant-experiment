@@ -11,7 +11,36 @@ const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
 
-app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+const https = require('https');
+
+const unirest = require('unirest');
+
+
+
+//app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+
+app.get('/', (req, res) => {
+  // somehow make the calls and only then...
+ unirest.get("https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
+    .strictSSL(false)
+    .end(function(res) {
+        if (res.error) {
+            console.log('GET error', res.error)
+            
+        } else {
+           // console.log('GET response', res.body)
+          
+                var data = res.body;
+                var data2 = JSON.parse(JSON.stringify(data));
+                console.log(data2.balance); 
+
+        }
+    }    
+ ) 
+  res.send(
+  {"msg": "Hello World"}
+  ) 
+});
 
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
