@@ -15,9 +15,7 @@ app.use(bodyParser.json())
 
 //app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
 
-app.get('/', (request , response) => {
-
-   // https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {
+  // https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {
     https.get('https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014', (resp) => {  
   let data = '';
   // A chunk of data has been recieved.
@@ -33,7 +31,6 @@ app.get('/', (request , response) => {
 }).on("error", (err) => {
   console.log("Error: " + err.message);
 });
-})
 
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
