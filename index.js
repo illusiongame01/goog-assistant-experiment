@@ -108,6 +108,7 @@ app.post('/', function (req, res) {
     }
     let intentMap = new Map()
     var hi = callrest();
+    agent.add(hi)
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
     //intentMap.set('Ontop-Promotion', sim2fly)
