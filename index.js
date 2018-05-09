@@ -69,11 +69,12 @@ app.post('/', function (req, res) {
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
             request.end(function(resp) {
+                  agent.add("สวัสดี")
                 if(resp.error) {
                     console.log(resp.error)
                   agent.add("ไม่พบยอดเงินคงเหลือ")
                 } else  {
-                    let result = resย.body;
+                    let result = resp.body;
                     let output = '';
                     balance = result.balance;                 
                      
@@ -82,7 +83,7 @@ app.post('/', function (req, res) {
                 }
             });
              
-              agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
+              agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัด")
               agent.add(new Card({
             title: `Sim 2 Fly`,
             imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
