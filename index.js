@@ -19,9 +19,9 @@ const unirest = require('unirest');
 
 //app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
 
-app.get('/', (req, res) => {
-  // somehow make the calls and only then...
-     var req = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
+app.get('/', function (request, response) {
+        let balance = '';
+        var req = unirest("GET", "https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
                 req.end(function(res) {
                 if(res.error) {
                     console.log(res.error)
@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
                 }
           
             });
+                
 });
 
 app.post('/', (req, res) => {
