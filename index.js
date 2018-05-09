@@ -47,7 +47,7 @@ app.get('/', function (request, response) {
                 
 });
 
-app.post('/', (req, res) => {
+app.post('/', function (request, response) {
     console.log("Request Header: " + JSON.stringify(req.headers))
     console.log("Request Body: " + JSON.stringify(req.body))
 
@@ -68,7 +68,7 @@ app.post('/', (req, res) => {
          var balance = '';
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
              var req = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
-            req.end(function(res , agent) {
+            req.end(function(res) {
                 if(res.error) {
                     console.log(res.error)
                   agent.add("ไม่พบยอดเงินคงเหลือ")
