@@ -66,11 +66,7 @@ app.post('/', (req, res) => {
             req.end(function(res , agent) {
                 if(res.error) {
                     console.log(res.error)
-                    response.setHeader('Content-Type', 'application/json');
-                    response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
-                    }));
+                  agent.add("ไม่พบยอดเงินคงเหลือ")
                 } else  {
                     let result = res.body;
                     let output = '';
