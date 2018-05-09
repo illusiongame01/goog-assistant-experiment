@@ -47,7 +47,7 @@ app.get('/', function (request, response) {
                 
 });
 
-app.post('/', function (request, response) {
+app.post('/', function (req, res) {
     console.log("Request Header: " + JSON.stringify(req.headers))
     console.log("Request Body: " + JSON.stringify(req.body))
 
