@@ -68,8 +68,7 @@ app.post('/', function (req, res) {
          let balance = '2';
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
-             agent.add("สวัสดี")     
-             await setTimeout(()=>{}, 2000); 
+             agent.add("สวัสดี")                
               request.end(function(res) {
                 if(res.error) {
                     console.log(res.error)
@@ -103,11 +102,16 @@ app.post('/', function (req, res) {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
     }
 
+    function callrest() {
+
+         return 'สวัสดี'
+    }
     let intentMap = new Map()
 
     intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('Ontop-Promotion', sim2fly)
+    //intentMap.set('Ontop-Promotion', sim2fly)
+    intentMap.set('Ontop-Promotion', hi)
     agent.handleRequest(intentMap)
 })
 
