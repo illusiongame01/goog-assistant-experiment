@@ -21,25 +21,29 @@ const unirest = require('unirest');
 
 app.get('/', (req, res) => {
   // somehow make the calls and only then...
- unirest.get("https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
-    .strictSSL(false)
-    .end(function(res) {
-        if (res.error) {
-            console.log('GET error', res.error)
-            
-        } else {
-           // console.log('GET response', res.body)
+     var req = unirest("GET", "https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
+                req.end(function(res) {
+                if(res.error) {
+                    console.log(res.error)
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "speech" : "Error. Can you try it again ? ",
+                        "displayText" : "Error. Can you try it again ? "
+                    }));
+                } else  {
+                    let result = res.body;
+                    let output = '';
+                 
+                        output += result.balance;
+                        output+="\n"
+                        balance = JSON.stringify(res.body);
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "Object" : result,
+                    })); 
+                }
           
-                var data = res.body;
-                var data2 = JSON.parse(JSON.stringify(data));
-                console.log(data2.balance); 
-
-        }
-    }    
- ) 
-  res.send(
-  {"msg": "Hello World"}
-  ) 
+            });
 });
 
 app.post('/', (req, res) => {
