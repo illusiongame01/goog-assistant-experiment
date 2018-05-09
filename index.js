@@ -73,7 +73,7 @@ app.post('/', function (req, res) {
                     console.log(resp.error)
                   agent.add("ไม่พบยอดเงินคงเหลือ")
                 } else  {
-                    let result = res.body;
+                    let result = resย.body;
                     let output = '';
                     balance = result.balance;                 
                      
