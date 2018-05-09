@@ -67,10 +67,10 @@ app.post('/', function (req, res) {
      function sim2fly(agent) {
          var balance = '';
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
-             var req = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
-            req.end(function(res) {
-                if(res.error) {
-                    console.log(res.error)
+            unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
+            req.end(function(resp) {
+                if(resp.error) {
+                    console.log(resp.error)
                   agent.add("ไม่พบยอดเงินคงเหลือ")
                 } else  {
                     let result = res.body;
