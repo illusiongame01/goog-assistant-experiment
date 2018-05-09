@@ -21,7 +21,7 @@ const unirest = require('unirest');
 
 app.get('/', function (request, response) {
         let balance = '';
-        var req = unirest("GET", "https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
+        var req = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
                 req.end(function(res) {
                 if(res.error) {
                     console.log(res.error)
