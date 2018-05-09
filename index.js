@@ -69,9 +69,24 @@ app.post('/', function (req, res) {
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
              agent.add("สวัสดี")
-            request.end(function(resp,agent) {
-                  agent.add("สวัสดี2")
-               
+             await sleep(2000);
+              request.end(function(res) {
+                if(res.error) {
+                    console.log(res.error)
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "speech" : "Error. Can you try it again ? ",
+                        "displayText" : "Error. Can you try it again ? "
+                    }));
+                } else  {
+                    let result = res.body;
+                    let output = '';
+                 
+                      
+                     
+                    agent.add("ยอดเงินคงเหลือคือ :")
+                    agent.add(result.balance)
+                }
             });
              
               agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัด")
