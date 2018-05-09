@@ -59,26 +59,28 @@ app.post('/', (req, res) => {
         agent.add(`I am sorry. Can you repeat again`)
     }
 
-    function sim2fly(agent) {
-    agent.add("ตรวจสอบยอดเงินคงเหลือ")
-    unirest.get("https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
-    .strictSSL(false)
-    .end(function(res,agent) {
-        if (res.error) {
-            console.log('GET error', res.error)
-             agent.add("ไม่พบยอดเงินคงเหลือ")
-        } else {
-           // console.log('GET response', res.body)
-          
-                var data = res.body;
-                var data2 = JSON.parse(JSON.stringify(data));
-                console.log(data2.balance); 
-                agent.add("ยอดเงินคงเหลือ "+data2.balance)
-                  }
-             }   
-         ) 
-        agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
-        agent.add(new Card({
+     function sim2fly(agent) {
+             var req = unirest("GET", "https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
+            req.end(function(res) {
+                if(res.error) {
+                    console.log(res.error)
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "speech" : "Error. Can you try it again ? ",
+                        "displayText" : "Error. Can you try it again ? "
+                    }));
+                } else  {
+                    let result = res.body;
+                    let output = '';
+                 
+                      
+                     
+                    agent.add("ยอดเงินคงเหลือคือ : " + result.balance)
+                
+                }
+            });
+              agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
+              agent.add(new Card({
             title: `Sim 2 Fly`,
             imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
             text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
