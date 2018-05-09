@@ -68,8 +68,7 @@ app.post('/', function (req, res) {
          let balance = '2';
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
-             agent.add("สวัสดี")
-             await sleep(2000);
+             agent.add("สวัสดี")            
               request.end(function(res) {
                 if(res.error) {
                     console.log(res.error)
