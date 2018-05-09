@@ -69,7 +69,7 @@ app.post('/', function (req, res) {
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
              agent.add("สวัสดี")
-            request.end(function(resp) {
+            request.end(function(resp,agent) {
                  
                 if(resp.error) {
                     console.log(resp.error)
