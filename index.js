@@ -69,19 +69,9 @@ app.post('/', function (req, res) {
           agent.add("ตรวจสอบยอดเงินคงเหลือ")
            var request = unirest("GET", "https://110.49.202.87:8443/GoogleAssistant/GetCurrentBalacnce/66932780014").strictSSL(false);     
              agent.add("สวัสดี")
-            request.end(function(resp) {
+            request.end(function(res) {
                   agent.add("สวัสดี2")
-                if(resp.error) {
-                    console.log(resp.error)
-                  agent.add(resp.error)
-                } else  {
-                    let result = resp.body;
-                    let output = '';
-                    balance = result.balance;                 
-                    
-                     agent.add(balance)
-                
-                }
+               
             });
              
               agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัด")
