@@ -122,9 +122,9 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('ir:roaming', sim2fly)
-    intentMap.set('on-top', onTopHandler)
-    intentMap.set('top-up', balanceHandler)
+    //intentMap.set('ir:roaming', sim2fly)
+    intentMap.set('Ontop-Promotion', onTopHandler)
+    //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
 
