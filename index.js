@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
                     title: `ซิม เน็ต มาราธอน 600`,
                     description: "ซิม เน็ต มาราธอน 600 บาท (เน็ตไม่อั้นเร็ว 1 Mbps นาน 6 เดือน)",
                     image: new Image({
-                        url: simImg[3], alt: 'ซิม เน็ต มาราธอน 600'
+                        url: simImg[2], alt: 'ซิม เน็ต มาราธอน 600'
                     })
                 }
             }
