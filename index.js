@@ -146,24 +146,24 @@ app.post('/', (req, res) => {
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
-                    title: ${retJSON.menu.packages.packageList[0].packageName_TH},
-                    description: ${retJSON.menu.packages.packageList[0].packageDetail_TH},
+                    title: '${retJSON.menu.packages.packageList[0].packageName_TH}',
+                    description: '${retJSON.menu.packages.packageList[0].packageDetail_TH}',
                     image: new Image({
-                        url: simImg[0], alt: ${retJSON.menu.packages.packageList[0].packageName_TH} 
+                        url: simImg[0], alt: '${retJSON.menu.packages.packageList[0].packageName_TH}' 
                     })
                 },
                 'Select_899': {
-                     title: ${retJSON.menu.packages.packageList[1].packageName_TH} ,
-                    description: ${retJSON.menu.packages.packageList[1].packageDetail_TH} ,
+                     title: '${retJSON.menu.packages.packageList[1].packageName_TH}' ,
+                    description: '${retJSON.menu.packages.packageList[1].packageDetail_TH}' ,
                     image: new Image({
-                        url: simImg[1], alt: ${retJSON.menu.packages.packageList[1].packageName_TH}
+                        url: simImg[1], alt: '${retJSON.menu.packages.packageList[1].packageName_TH}'
                     })
                 },
                 'Select_600': {
-                     title: ${retJSON.menu.packages.packageList[2].packageName_TH} ,
-                    description: ${retJSON.menu.packages.packageList[2].packageDetail_TH} ,
+                     title: '${retJSON.menu.packages.packageList[2].packageName_TH}' ,
+                    description: '${retJSON.menu.packages.packageList[2].packageDetail_TH}' ,
                     image: new Image({
-                        url: simImg[2], alt: ${retJSON.menu.packages.packageList[2].packageName_TH} 
+                        url: simImg[2], alt: '${retJSON.menu.packages.packageList[2].packageName_TH}' 
                     })
                 }
             }
