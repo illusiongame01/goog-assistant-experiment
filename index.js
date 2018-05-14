@@ -152,7 +152,7 @@ app.post('/', (req, res) => {
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
            // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            speech: greeting,
+            speech: 'อุ่นใจขอแนะนำ ' + greeting,
             text: greeting
         }))
         
