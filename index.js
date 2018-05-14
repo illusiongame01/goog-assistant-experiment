@@ -1,8 +1,12 @@
+const { SimpleResponse, Carousel, Image } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+
 const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
+
+const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
 
@@ -11,7 +15,41 @@ const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
 
-app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+app.get('/', async (request, response) => {
+    let retJSON = await https.getJSON({
+        host: '110.49.202.87',
+        port: 8443,
+        path: '/GoogleAssistant/GetCurrentBalacnce/66932780014',
+        method: 'GET',
+        rejectUnauthorized: false,
+        agent: false,
+    })
+    response.send(retJSON)
+    response.end()
+})
+
+app.get('/top-seller', async (request, response) => {
+    await https.get({
+        host: '110.49.202.87',
+        port: 8443,
+        path: '/GoogleAssistant/GetMainMenu',
+        method: 'GET',
+        rejectUnauthorized: false,
+        agent: false,
+    }, (res) => {
+        let data = ''
+
+        res.on('data', (x) => {data += x})
+
+        res.on('end', () => {
+            response.send(JSON.parse(data))
+            response.end()
+        })
+    }).on('error', (e) => {
+        console.log(e)
+        response.send({error: e})
+    })
+})
 
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
@@ -22,7 +60,7 @@ app.post('/', (req, res) => {
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
-        agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
+        agent.add(`เธชเธงเธฑเธชเธ”เธตเธเธฃเธฑเธ เธกเธตเธญเธฐเนเธฃเนเธซเนเธญเธธเนเธเนเธเธเนเธงเธขเธเธฃเธฑเธ`)
     }
 
     function fallback(agent) {
@@ -31,22 +69,62 @@ app.post('/', (req, res) => {
     }
 
     function sim2fly(agent) {
-        agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
-        agent.add(new Card({
-            title: `Sim 2 Fly`,
-            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
-            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
+        const simImg = [
+            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
+            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+        ]
+
+        let conv = agent.conv()
+        conv.ask(new SimpleResponse({
+            speech: '<speak>เธญเธธเนเธเนเธเนเธเธฐเธเธณ Sim<sub alias="เธ—เธน">2</sub>Fly เธฃเธฒเธเธฒเธเธฃเธฐเธซเธขเธฑเธ”เธเธฃเธฑเธ</speak>',
+            text: 'เธญเธธเนเธเนเธเนเธเธฐเธเธณ Sim2Fly เธฃเธฒเธเธฒเธเธฃเธฐเธซเธขเธฑเธ”เธเธฃเธฑเธ โ๏ธ'
         }))
+        conv.ask(new Carousel({
+            items: {
+                'Select_399': {
+                    title: `Sim 2 Fly 399`,
+                    description: `เน€เธญเน€เธเธตเธข, เธญเธญเธชเน€เธ•เธฃเน€เธฅเธตเธข ๐—ผ`,
+                    image: new Image({
+                        url: simImg[0], alt: 'Sim2Fly 399'
+                    })
+                },
+                'Select_899': {
+                    title: `Sim 2 Fly 899`,
+                    description: "เธขเธธเนเธฃเธ เธญเน€เธกเธฃเธดเธเธฒ เนเธฅเธฐเธญเธทเนเธ ๐",
+                    image: new Image({
+                        url: simImg[1], alt: 'Sim2Fly 899'
+                    })
+                }
+            }
+        }))
+        agent.add(conv)
+    }
+
+    function onTopHandler(agent) {
+        agent.add(`<speak>เธชเธฒเธกเธฒเธฃเธ–เน€เธฅเธทเธญเธเนเธเธเน€เธเธเน€เธชเธฃเธดเธกเนเธ”เนเธ—เธตเนเนเธญเธ My <say-as interpret-as="verbatim">AIS</say-as> เธเธฃเธฑเธ</speak>`)
+        agent.add(new Suggestion(`Open MY AIS`))
+    }
+
+    async function balanceHandler(agent) {
+        let retJSON = await https.getJSON({
+            host: '110.49.202.87',
+            port: 8443,
+            path: '/GoogleAssistant/GetCurrentBalacnce/66932780014',
+            method: 'GET',
+            rejectUnauthorized: false,
+            agent: false,
+        })
+        agent.add(`เธเธธเธ“เธกเธตเธขเธญเธ”เน€เธเธดเธเธเธเน€เธซเธฅเธทเธญ ${retJSON.balance} เธเธฒเธ— เธชเธเนเธเน€เธ•เธดเธกเน€เธเธดเธเธกเธฑเนเธขเธเธฃเธฑเธ`)
+        agent.add(new Suggestion(`Open MY AIS`))
     }
 
     let intentMap = new Map()
 
-    intentMap.set('Default Welcome Intent', welcome)
+    intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('ir:roaming', sim2fly)
-    
+    intentMap.set('on-top', onTopHandler)
+    intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
 
