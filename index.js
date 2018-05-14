@@ -72,6 +72,7 @@ app.post('/', (req, res) => {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+            'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
         ]
 
         let conv = agent.conv()
@@ -93,6 +94,13 @@ app.post('/', (req, res) => {
                     description: "ยุโรป อเมริกา และอื่น 🌎",
                     image: new Image({
                         url: simImg[1], alt: 'Sim2Fly 899'
+                    })
+                },
+                'Select_600': {
+                    title: `ซิม เน็ต มาราธอน 600`,
+                    description: "ซิม เน็ต มาราธอน 600 บาท (เน็ตไม่อั้นเร็ว 1 Mbps นาน 6 เดือน)",
+                    image: new Image({
+                        url: simImg[3], alt: 'ซิม เน็ต มาราธอน 600'
                     })
                 }
             }
