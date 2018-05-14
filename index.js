@@ -14,7 +14,20 @@ const PORT = process.env.PORT || 4200
 const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
-app.get('/', (request, response) => response.send({"msg": "Hello world!"}))
+app.get('/', async (request, response) => {
+    let retJSON = await https.getJSON({
+            host: '110.49.202.87',
+            port: 8443,
+            path: '/GoogleAssistant/GetMainMenu',
+            method: 'GET',
+            rejectUnauthorized: false,
+            agent: false,
+     })
+    response.send(retJSON)
+    response.end()
+})
+
+  
 app.get('/Hello', async (request, response) => {
     let retJSON = await https.getJSON({
         host: '110.49.202.87',
