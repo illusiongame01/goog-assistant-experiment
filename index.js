@@ -24,7 +24,7 @@ app.get('/', async (request, response) => {
             rejectUnauthorized: false,
             agent: false,
      })
-    response.send(retJSON.menu.packages.packageList.0)
+    response.send(retJSON.menu.packages.packageList[0])
     response.end()
 })
   
