@@ -130,12 +130,7 @@ app.post('/', (req, res) => {
         
      
 
-        let conv = agent.conv()
-        conv.ask(new SimpleResponse({
-           // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            speech: '<speak> ${retJSON.menu.packages.packageList[0].groupName_TH} </speak>',
-            text: '${retJSON.menu.packages.packageList[0].groupName_TH}'
-        }))
+      
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -153,6 +148,14 @@ app.post('/', (req, res) => {
         const packagedetail2 = res2.packageDetail_TH;
         const packagename3 = res3.packageName_TH;
         const packagedetail3 = res3.packageDetail_TH;
+        const greeting = res1.groupName_TH;
+        let conv = agent.conv()
+        conv.ask(new SimpleResponse({
+           // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+            speech: greeting,
+            text: greeting
+        }))
+        
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
