@@ -147,27 +147,33 @@ app.post('/', (req, res) => {
         let res1 = retJSON.menu.packages.packageList[0];
         let res2 = retJSON.menu.packages.packageList[1];
         let res3 = retJSON.menu.packages.packageList[2];
+        const packagename1 = res1.packageName_TH;
+        const packagedetail1 = res1.packageDetail_TH;
+        const packagename2 = res2.packageName_TH;
+        const packagedetail2 = res2.packageDetail_TH;
+        const packagename3 = res3.packageName_TH;
+        const packagedetail3 = res3.packageDetail_TH;
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
-                    title: '${res1.packageName_TH}',
-                    description: '${res1.packageDetail_TH}',
+                    title: packagename1,
+                    description: packagedetail1,
                     image: new Image({
-                        url: simImg[0], alt: '${res1.packageName_TH}' 
+                        url: simImg[0], alt: packagename1
                     })
                 },
                 'Select_899': {
-                     title: '${res2.packageName_TH}' ,
-                    description: '${res2.packageDetail_TH}' ,
+                     title: packagename2 ,
+                    description: packagedetail2 ,
                     image: new Image({
-                        url: simImg[1], alt: '${res2.packageName_TH}'
+                        url: simImg[1], alt: packagename2
                     })
                 },
                 'Select_600': {
-                     title: '${res3.packageName_TH}' ,
-                    description: '${res3.packageDetail_TH}' ,
+                     title: packagename3 ,
+                    description: packagedetail3 ,
                     image: new Image({
-                        url: simImg[2], alt: '${res3.packageName_TH}' 
+                        url: simImg[2], alt: packagename3 
                     })
                 }
             }
