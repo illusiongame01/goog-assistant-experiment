@@ -144,27 +144,30 @@ app.post('/', (req, res) => {
             rejectUnauthorized: false,
             agent: false,
         })
+        let res1 = retJSON.menu.packages.packageList[0];
+        let res2 = retJSON.menu.packages.packageList[1];
+        let res3 = retJSON.menu.packages.packageList[2];
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
-                    title: '${retJSON.menu.packages.packageList[0].packageName_TH}',
-                    description: '${retJSON.menu.packages.packageList[0].packageDetail_TH}',
+                    title: '${res1.packageName_TH}',
+                    description: '${res1.packageDetail_TH}',
                     image: new Image({
-                        url: simImg[0], alt: '${retJSON.menu.packages.packageList[0].packageName_TH}' 
+                        url: simImg[0], alt: '${res1.packageName_TH}' 
                     })
                 },
                 'Select_899': {
-                     title: '${retJSON.menu.packages.packageList[1].packageName_TH}' ,
-                    description: '${retJSON.menu.packages.packageList[1].packageDetail_TH}' ,
+                     title: '${res2.packageName_TH}' ,
+                    description: '${res2.packageDetail_TH}' ,
                     image: new Image({
-                        url: simImg[1], alt: '${retJSON.menu.packages.packageList[1].packageName_TH}'
+                        url: simImg[1], alt: '${res2.packageName_TH}'
                     })
                 },
                 'Select_600': {
-                     title: '${retJSON.menu.packages.packageList[2].packageName_TH}' ,
-                    description: '${retJSON.menu.packages.packageList[2].packageDetail_TH}' ,
+                     title: '${res3.packageName_TH}' ,
+                    description: '${res3.packageDetail_TH}' ,
                     image: new Image({
-                        url: simImg[2], alt: '${retJSON.menu.packages.packageList[2].packageName_TH}' 
+                        url: simImg[2], alt: '${res3.packageName_TH}' 
                     })
                 }
             }
