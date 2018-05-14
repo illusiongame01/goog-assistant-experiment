@@ -193,7 +193,7 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
-    //intentMap.set('Hello', bestSellerHandler)
+    intentMap.set('Hello', bestSellerHandler)
     intentMap.set('Ontop-Promotion', balanceHandler)
     //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
