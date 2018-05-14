@@ -133,8 +133,8 @@ app.post('/', (req, res) => {
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
            // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            speech:  ${retJSON.menu.packages.packageList[0].groupName_TH} ,
-            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ✈️'
+            speech: '<speak> ${retJSON.menu.packages.packageList[0].groupName_TH} </speak>',
+            text: '${retJSON.menu.packages.packageList[0].groupName_TH}'
         }))
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
