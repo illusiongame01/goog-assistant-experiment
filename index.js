@@ -121,7 +121,7 @@ app.post('/', (req, res) => {
         agent.add(conv)
     }
     
-    function bestSellerHandler(agent) {
+    async function bestSellerHandler(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
