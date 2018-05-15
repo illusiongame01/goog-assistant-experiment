@@ -157,7 +157,7 @@ app.post('/', (req, res) => {
         }))
         
         conv.ask(new Carousel({
-            items: [{
+            items: ["optionInfo":{
                 /*'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
@@ -187,7 +187,7 @@ app.post('/', (req, res) => {
             "accessibilityText": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466"
           }
         },
-        {
+        "optionInfo":{
           "description": "at price of Rs. 89,990",
           "title": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",        
           "image": {
@@ -195,7 +195,7 @@ app.post('/', (req, res) => {
             "accessibilityText": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)"
           }
         },
-        {
+        "optionInfo":{
           "description": "at price of Rs. 105,185",
           "title": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
           "image": {
