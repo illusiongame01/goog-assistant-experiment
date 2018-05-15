@@ -121,16 +121,13 @@ app.post('/', (req, res) => {
         agent.add(conv)
     }
     
-   async function bestSellerHandler(agent) {
+ function bestSellerHandler(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
         ]
         
-     
-
-      
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -139,76 +136,39 @@ app.post('/', (req, res) => {
             rejectUnauthorized: false,
             agent: false,
         })
-        let res1 = retJSON.menu.packages.packageList[0];
-        let res2 = retJSON.menu.packages.packageList[1];
-        let res3 = retJSON.menu.packages.packageList[2];
-        const packagename1 = res1.packageName_TH;
-        const packagedetail1 = res1.packageDetail_TH;
-        const packagename2 = res2.packageName_TH;
-        const packagedetail2 = res2.packageDetail_TH;
-        const packagename3 = res3.packageName_TH;
-        const packagedetail3 = res3.packageDetail_TH;
-        const greeting = res1.groupName_TH;
+
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
-           // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            speech: 'อุ่นใจขอแนะนำ ' + greeting,
-            text: greeting
+            speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ✈️'
         }))
-        
         conv.ask(new Carousel({
-            items: ["optionInfo":{
-                /*'Select_399': {
-                    title: packagename1,
-                    description: packagedetail1,
+            items: {
+                'Select': {
+                    title: ' ${retJSON.menu.packages.packageList[0].packageName_TH} ',
+                    description: ' ${retJSON.menu.packages.packageList[0].packageDetail_TH} ',
                     image: new Image({
-                        url: simImg[0], alt: packagename1
+                        url: simImg[0], alt: ' ${retJSON.menu.packages.packageList[0].packageName_TH} '
                     })
                 },
-                'Select_899': {
-                     title: packagename2 ,
-                    description: packagedetail2 ,
+                'Select': {
+                     title: ' ${retJSON.menu.packages.packageList[1].packageName_TH} ',
+                    description: ' ${retJSON.menu.packages.packageList[1].packageDetail_TH} ',
                     image: new Image({
-                        url: simImg[1], alt: packagename2
+                        url: simImg[1], alt: ' ${retJSON.menu.packages.packageList[1].packageName_TH} '
                     })
                 },
-                'Select_600': {
-                     title: packagename3 ,
-                    description: packagedetail3 ,
+                'Select': {
+                     title: ' ${retJSON.menu.packages.packageList[2].packageName_TH} ',
+                    description: ' ${retJSON.menu.packages.packageList[2].packageDetail_TH} ',
                     image: new Image({
-                        url: simImg[2], alt: packagename3 
+                        url: simImg[2], alt: ' ${retJSON.menu.packages.packageList[2].packageName_TH} '
                     })
-                }*/
-                
-                "description": "at price of Rs. 57,999",
-          "title": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466",        
-          "image": {
-            "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg",
-            "accessibilityText": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466"
-          }
-        },
-        "optionInfo":{
-          "description": "at price of Rs. 89,990",
-          "title": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",        
-          "image": {
-            "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg",
-            "accessibilityText": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)"
-          }
-        },
-        "optionInfo":{
-          "description": "at price of Rs. 105,185",
-          "title": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
-          "image": {
-            "url": "https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg",
-            "accessibilityText": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)"
-          }
-        }
-      ],
-      "platform": "google",
-      "type": "browse_carousel_card"
-    }))
+                }
+            }
+        }))
         agent.add(conv)
-}
+    }
 
     function onTopHandler(agent) {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
