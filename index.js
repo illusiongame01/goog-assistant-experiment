@@ -158,21 +158,21 @@ app.post('/', (req, res) => {
         
         conv.ask(new Carousel({
             items: {
-                'Select': {
+                'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
                     image: new Image({
                         url: simImg[0], alt: packagename1
                     })
                 },
-                'Select': {
+                'Select_699': {
                      title: packagename2 ,
                     description: packagedetail2 ,
                     image: new Image({
                         url: simImg[1], alt: packagename2
                     })
                 },
-                'Select': {
+                'Select_600': {
                      title: packagename3 ,
                     description: packagedetail3 ,
                     image: new Image({
