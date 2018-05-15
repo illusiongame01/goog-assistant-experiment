@@ -184,11 +184,11 @@ app.post('/', (req, res) => {
           "title": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466",
           "footer": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466",
           "image": {
-            "url": "https://rukminim1.flixcart.com/image/200/200/j4irlow0/computer/j/8/c/apple-na-notebook-original-imaevdrcvuksg2zv.jpeg?q=90",
+            "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg",
             "accessibilityText": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466"
           },
           "openUrlAction": {
-            "url": "https://dl.flipkart.com/dl/apple-macbook-air-core-i5-5th-gen-8-gb-128-gb-ssd-mac-os-sierra-mqd32hn-a/p/itmevcpqqhf6azn3?pid=COMEVCPQBXBDFJ8C&affid=HotDeals20&affExtParam2=pricee-desktop-search-21"
+            "url": "http://www.google.com"
           }
         },
         {
@@ -196,11 +196,11 @@ app.post('/', (req, res) => {
           "title": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",
           "footer": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",
           "image": {
-            "url": "https://assetscdn.paytm.com/images/catalog/product/L/LA/LAPAPPLE-MACBOOROSE73954D5B64792/1.jpg",
+            "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg",
             "accessibilityText": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)"
           },
           "openUrlAction": {
-            "url": "https://paytmmall.com/apple-macbook-pro-mpxq2-r2-core-i5-6th-gen-8-gb-128-gb-33-78-cm-13-3-mac-os-CMPLXLAPAPPLE-MACBOODUMM202563C836CCA-pdp?product_id=145129487&discoverability=online&src=grid&utm_source=NDTV&utm_medium=affiliate&utm_campaign=NDTV-recharge&utm_term=Gadget360"
+            "url": "http://www.google.com"
           }
         },
         {
@@ -208,11 +208,11 @@ app.post('/', (req, res) => {
           "title": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
           "footer": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
           "image": {
-            "url": "https://assetscdn.paytm.com/images/catalog/product/L/LA/LAPAPPLE-MPXT2HNAVK49295F2A396E0/1.jpg",
+            "url": "https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg",
             "accessibilityText": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)"
           },
           "openUrlAction": {
-            "url": "https://paytmmall.com/apple-mpxt2hn-a-core-i5-6th-gen-8-gb-256-gb-33-78-cm-13-3-mac-os-CMPLXLAPAPPLE-MPXT2HE-HU224691C3146BBC-pdp?product_id=145650181&discoverability=online&src=grid&utm_source=NDTV&utm_medium=affiliate&utm_campaign=NDTV-recharge&utm_term=Gadget360"
+            "url": "http://www.google.com"
           }
         }
       ],
