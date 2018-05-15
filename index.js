@@ -186,9 +186,6 @@ app.post('/', (req, res) => {
           "image": {
             "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg",
             "accessibilityText": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466"
-          },
-          "openUrlAction": {
-            "url": "http://www.google.com"
           }
         },
         {
@@ -198,9 +195,6 @@ app.post('/', (req, res) => {
           "image": {
             "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg",
             "accessibilityText": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)"
-          },
-          "openUrlAction": {
-            "url": "http://www.google.com"
           }
         },
         {
@@ -210,9 +204,6 @@ app.post('/', (req, res) => {
           "image": {
             "url": "https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg",
             "accessibilityText": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)"
-          },
-          "openUrlAction": {
-            "url": "http://www.google.com"
           }
         }
       ],
