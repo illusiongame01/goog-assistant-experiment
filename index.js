@@ -158,7 +158,7 @@ app.post('/', (req, res) => {
         
         conv.ask(new Carousel({
             items: {
-                'Select_399': {
+                /*'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
                     image: new Image({
@@ -178,7 +178,47 @@ app.post('/', (req, res) => {
                     image: new Image({
                         url: simImg[2], alt: packagename3 
                     })
-                }
+                }*/
+                
+                "description": "at price of Rs. 57,999",
+          "title": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466",
+          "footer": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466",
+          "image": {
+            "url": "https://rukminim1.flixcart.com/image/200/200/j4irlow0/computer/j/8/c/apple-na-notebook-original-imaevdrcvuksg2zv.jpeg?q=90",
+            "accessibilityText": "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra) MQD32HN/A A1466"
+          },
+          "openUrlAction": {
+            "url": "https://dl.flipkart.com/dl/apple-macbook-air-core-i5-5th-gen-8-gb-128-gb-ssd-mac-os-sierra-mqd32hn-a/p/itmevcpqqhf6azn3?pid=COMEVCPQBXBDFJ8C&affid=HotDeals20&affExtParam2=pricee-desktop-search-21"
+          }
+        },
+        {
+          "description": "at price of Rs. 89,990",
+          "title": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",
+          "footer": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)",
+          "image": {
+            "url": "https://assetscdn.paytm.com/images/catalog/product/L/LA/LAPAPPLE-MACBOOROSE73954D5B64792/1.jpg",
+            "accessibilityText": "Apple Macbook PRO MPXQ2/R2 Core i5 (6th Gen)/8 GB/128 GB/33.78 cm (13.3)/Mac OS)"
+          },
+          "openUrlAction": {
+            "url": "https://paytmmall.com/apple-macbook-pro-mpxq2-r2-core-i5-6th-gen-8-gb-128-gb-33-78-cm-13-3-mac-os-CMPLXLAPAPPLE-MACBOODUMM202563C836CCA-pdp?product_id=145129487&discoverability=online&src=grid&utm_source=NDTV&utm_medium=affiliate&utm_campaign=NDTV-recharge&utm_term=Gadget360"
+          }
+        },
+        {
+          "description": "at price of Rs. 105,185",
+          "title": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
+          "footer": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)",
+          "image": {
+            "url": "https://assetscdn.paytm.com/images/catalog/product/L/LA/LAPAPPLE-MPXT2HNAVK49295F2A396E0/1.jpg",
+            "accessibilityText": "Apple MPXT2HN/A Core i5 (6th Gen)/8 GB/256 GB/33.78 cm (13.3)/Mac OS)"
+          },
+          "openUrlAction": {
+            "url": "https://paytmmall.com/apple-mpxt2hn-a-core-i5-6th-gen-8-gb-256-gb-33-78-cm-13-3-mac-os-CMPLXLAPAPPLE-MPXT2HE-HU224691C3146BBC-pdp?product_id=145650181&discoverability=online&src=grid&utm_source=NDTV&utm_medium=affiliate&utm_campaign=NDTV-recharge&utm_term=Gadget360"
+          }
+        }
+      ],
+      "platform": "google",
+      "type": "browse_carousel_card"
+                
             }
         }))
         agent.add(conv)
