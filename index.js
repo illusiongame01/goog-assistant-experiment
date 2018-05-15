@@ -158,26 +158,41 @@ app.post('/', (req, res) => {
         
         conv.ask(new Carousel({
             items: {
-                'Select_399': {
-                    title: packagename1,
+                 'Select_399': {
+      'synonyms': [
+        packagename1,
+        packagename2,
+        packagename3,
+      ],
+      title: packagename1,
                     description: packagedetail1,
                     image: new Image({
                         url: simImg[0], alt: packagename1
-                    })
-                },
-                'Select_699': {
-                     title: packagename2 ,
+      }),
+    },
+  'Select_699': {
+      'synonyms': [
+        'Google Home Assistant',
+        'Assistant on the Google Home',
+    ],
+        title: packagename2 ,
                     description: packagedetail2 ,
                     image: new Image({
                         url: simImg[1], alt: packagename2
-                    })
-                },
-                'Select_600': {
-                     title: packagename3 ,
+                    }),
+    },
+    'Select_600': {
+      'synonyms': [
+        'Google Pixel XL',
+        'Pixel',
+        'Pixel XL',
+      ],
+     title: packagename3 ,
                     description: packagedetail3 ,
                     image: new Image({
                         url: simImg[2], alt: packagename3 
                     })
+                   
                 }
             }
         }))
