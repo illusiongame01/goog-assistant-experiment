@@ -121,7 +121,7 @@ app.post('/', (req, res) => {
         agent.add(conv)
     }
     
-    async function bestSellerHandler(agent) {
+   async function bestSellerHandler(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
@@ -157,7 +157,7 @@ app.post('/', (req, res) => {
         }))
         
         conv.ask(new Carousel({
-            items: {
+            items: [{
                 /*'Select_399': {
                     title: packagename1,
                     description: packagedetail1,
@@ -218,11 +218,9 @@ app.post('/', (req, res) => {
       ],
       "platform": "google",
       "type": "browse_carousel_card"
-                
-            }
-        }))
+    }))
         agent.add(conv)
-    }
+}
 
     function onTopHandler(agent) {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
