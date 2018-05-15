@@ -121,13 +121,16 @@ app.post('/', (req, res) => {
         agent.add(conv)
     }
     
- function bestSellerHandler(agent) {
+ async function bestSellerHandler(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
         ]
         
+     
+
+      
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -136,33 +139,44 @@ app.post('/', (req, res) => {
             rejectUnauthorized: false,
             agent: false,
         })
-
+        let res1 = retJSON.menu.packages.packageList[0];
+        let res2 = retJSON.menu.packages.packageList[1];
+        let res3 = retJSON.menu.packages.packageList[2];
+        const packagename1 = res1.packageName_TH;
+        const packagedetail1 = res1.packageDetail_TH;
+        const packagename2 = res2.packageName_TH;
+        const packagedetail2 = res2.packageDetail_TH;
+        const packagename3 = res3.packageName_TH;
+        const packagedetail3 = res3.packageDetail_TH;
+        const greeting = res1.groupName_TH;
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
-            speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ✈️'
+           // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+            speech: 'อุ่นใจขอแนะนำ ' + greeting,
+            text: greeting
         }))
+        
         conv.ask(new Carousel({
             items: {
                 'Select': {
-                    title: ' ${retJSON.menu.packages.packageList[0].packageName_TH} ',
-                    description: ' ${retJSON.menu.packages.packageList[0].packageDetail_TH} ',
+                    title: packagename1,
+                    description: packagedetail1,
                     image: new Image({
-                        url: simImg[0], alt: ' ${retJSON.menu.packages.packageList[0].packageName_TH} '
+                        url: simImg[0], alt: packagename1
                     })
                 },
                 'Select': {
-                     title: ' ${retJSON.menu.packages.packageList[1].packageName_TH} ',
-                    description: ' ${retJSON.menu.packages.packageList[1].packageDetail_TH} ',
+                     title: packagename2 ,
+                    description: packagedetail2 ,
                     image: new Image({
-                        url: simImg[1], alt: ' ${retJSON.menu.packages.packageList[1].packageName_TH} '
+                        url: simImg[1], alt: packagename2
                     })
                 },
                 'Select': {
-                     title: ' ${retJSON.menu.packages.packageList[2].packageName_TH} ',
-                    description: ' ${retJSON.menu.packages.packageList[2].packageDetail_TH} ',
+                     title: packagename3 ,
+                    description: packagedetail3 ,
                     image: new Image({
-                        url: simImg[2], alt: ' ${retJSON.menu.packages.packageList[2].packageName_TH} '
+                        url: simImg[2], alt: packagename3 
                     })
                 }
             }
