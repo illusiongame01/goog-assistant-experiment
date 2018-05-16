@@ -168,17 +168,8 @@ app.post('/', (req, res) => {
       title: packagename1,
                     description: packagedetail1,
                     image: new Image({
-                        url: simImg[0], alt: packageCode1
-      }),
-                     
-            buttons: [
-                {
-                    title: packagename1,
-                    openUrlAction: {
-                        url: "https://www.google.com"
-                    }
-                }
-            ]
+                        url: simImg[0], alt: packagename1
+      }),       
     },
   'Select_699': {
       'synonyms': [
