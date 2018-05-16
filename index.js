@@ -209,50 +209,13 @@ app.post('/', (req, res) => {
     }
     
     function onHelloHandler(agent) {
-        let conv = agent.conv()
-   conv.ask('Simple Response')
-conv.ask(new Table({
-  title: 'Table Title',
-  subtitle: 'Table Subtitle',
-  image: new Image({
-    url: 'https://avatars0.githubusercontent.com/u/23533486',
-    alt: 'Actions on Google'
-  }),
-  columns: [
-    {
-      header: 'header 1',
-      align: 'CENTER',
-    },
-    {
-      header: 'header 2',
-      align: 'LEADING',
-    },
-    {
-      header: 'header 3',
-      align: 'TRAILING',
-    },
-  ],
-  rows: [
-    {
-      cells: ['row 1 item 1', 'row 1 item 2', 'row 1 item 3'],
-      dividerAfter: false,
-    },
-    {
-      cells: ['row 2 item 1', 'row 2 item 2', 'row 2 item 3'],
-      dividerAfter: true,
-    },
-    {
-      cells: ['row 2 item 1', 'row 2 item 2', 'row 2 item 3'],
-    },
-  ],
-  buttons: new Button({
-    title: 'Button Title',
-    url: 'https://github.com/actions-on-google'
-  }),
-}))
-
-        
-        agent.add(conv)
+              agent.add(new Card({
+            title: `Sim 2 Fly`,
+            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
+            buttonText: `ดูข้อมูลเพิ่มเติม`,
+            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
+        }))
     }
 
     async function balanceHandler(agent) {
