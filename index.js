@@ -169,7 +169,12 @@ app.post('/', (req, res) => {
                     description: packagedetail1,
                     image: new Image({
                         url: simImg[0], alt: packagename1
-      }),       
+      }),  
+      buttons: new Button({
+    title: 'This is a button',
+    url: 'https://assistant.google.com/',
+        }),
+              
     },
   'Select_699': {
       'synonyms': [
