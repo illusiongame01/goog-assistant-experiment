@@ -7,9 +7,7 @@ const { SimpleResponse, Carousel, Image ,
   List,
   MediaObject,
   Suggestions,  
-      } = 
-      require('actions-on-google');
-      //require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+      } =    require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
@@ -235,10 +233,6 @@ if (!conv.surface.capabilities.has('actions.capability.SCREEN_OUTPUT')) {
 }
 conv.ask(new Suggestions('Suggestion Chips'));
 conv.ask(new Suggestions(['suggestion 1', 'suggestion 2']));
-conv.ask(new LinkOutSuggestion({
-  name: 'Suggestion Link',
-  url: 'https://assistant.google.com/',
-}));
             agent.add(conv);
     }
 
