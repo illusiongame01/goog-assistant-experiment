@@ -156,6 +156,14 @@ app.post('/', (req, res) => {
             speech: 'อุ่นใจขอแนะนำ ' + greeting,
             text: greeting
         }))
+     
+      conv.ask(new Card({
+            title: `Sim 2 Fly`,
+            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
+            buttonText: `ดูข้อมูลเพิ่มเติม`,
+            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
+        }))
         
         conv.ask(new Carousel({
             items: {
@@ -198,13 +206,7 @@ app.post('/', (req, res) => {
             }
         }))    
         agent.add(conv)
-        agent.add(new Card({
-            title: `Sim 2 Fly`,
-            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
-            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-        }))
+       
     }
 
     function onTopHandler(agent) {
