@@ -221,7 +221,7 @@ app.post('/', (req, res) => {
         agent.add(new Suggestion(`Open MY AIS`))
         agent.add(new LinkOutSuggestion({
           name: 'Suggestion Link',
-          url: 'http://www.google.com/',
+          url: 'https://assistant.google.com/',
         }));
     }
 
