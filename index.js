@@ -207,6 +207,25 @@ app.post('/', (req, res) => {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
         agent.add(new Suggestion(`Open MY AIS`))
     }
+    
+    function onHelloHandler(agent) {
+        let conv = agent.conv()
+    if (!conv.surface.capabilities.has('actions.capability.MEDIA_OUTPUT')) {
+          conv.ask('Sorry, this device does not support audio playback.');
+          return;
+        }
+        conv.ask(new MediaObject({
+          name: 'Jazz in Paris',
+          url: 'http://storage.googleapis.com/automotive-media/Jazz_In_Paris.mp3',
+          description: 'A funky Jazz tune',
+          icon: new Image({
+            url: 'http://storage.googleapis.com/automotive-media/album_art.jpg',
+            alt: 'Media icon',
+          }),
+        }));
+        
+        agent.add(conv)
+    }
 
     async function balanceHandler(agent) {
         let retJSON = await https.getJSON({
@@ -218,11 +237,7 @@ app.post('/', (req, res) => {
             agent: false,
         })
         agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยครับ`)
-        agent.add(new Suggestion(`Open MY AIS`))
-        agent.add(new LinkOutSuggestion({
-          name: 'Suggestion Link',
-          url: 'https://assistant.google.com/',
-        }));
+        agent.add(new Suggestion(`Open MY AIS`))      
     }
 
     let intentMap = new Map()
@@ -230,8 +245,8 @@ app.post('/', (req, res) => {
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('Ontop-Promotion', bestSellerHandler)
-    intentMap.set('Balance', balanceHandler)
-    //intentMap.set('top-up', balanceHandler)
+   // intentMap.set('Balance', balanceHandler)
+    intentMap.set('Balance', onHelloHandler)
     agent.handleRequest(intentMap)
 })
 
