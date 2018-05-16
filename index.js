@@ -7,7 +7,9 @@ const { SimpleResponse, Carousel, Image ,
   List,
   MediaObject,
   Suggestions,  
-      } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+      } = 
+      require('actions-on-google');
+      //require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
