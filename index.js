@@ -227,33 +227,19 @@ app.post('/', (req, res) => {
             buttonText: `ดูข้อมูลเพิ่มเติม`,
             buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
         }))*/
-           let conv = agent.conv()
-        
-        conv.ask(new BrowseCarousel({
-  items: [
-    new BrowseCarouselItem({
-      title: 'Title of item 1',
-      url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
-      description: 'Description of item 1',
-      image: new Image({
-        url: 'https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg',
-        alt: 'text',
-      }),
-      footer: 'Item 1 footer',
-    }),
-    new BrowseCarouselItem({
-      title: 'Title of item 2',
-      url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
-      description: 'Description of item 2',
-      image: new Image({
-        url: 'https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg',
-        alt: 'text',
-      }),
-      footer: 'Item 2 footer',
-    }),
-  ],
+           let conv = agent.conv()        
+if (!conv.surface.capabilities.has('actions.capability.SCREEN_OUTPUT')) {
+  conv.ask('Sorry, try this on a screen device or select the ' +
+    'phone surface in the simulator.');
+  return;
+}
+conv.ask(new Suggestions('Suggestion Chips'));
+conv.ask(new Suggestions(['suggestion 1', 'suggestion 2']));
+conv.ask(new LinkOutSuggestion({
+  name: 'Suggestion Link',
+  url: 'https://assistant.google.com/',
 }));
-       agent.add(conv)
+            agent.add(conv);
     }
 
     async function balanceHandler(agent) {
