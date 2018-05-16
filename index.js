@@ -168,13 +168,13 @@ app.post('/', (req, res) => {
           title: 'Title: this is a title',
           buttons: new Button({
             title: 'This is a button',
-            url: 'https://assistant.google.com/',
+            url: 'https://www.google.com/',
           }),
           image: new Image({
             url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
             alt: 'Image alternate text',
           }),
-        }));
+        }))
      
         conv.ask(new Carousel({
             items: {
