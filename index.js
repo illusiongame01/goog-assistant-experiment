@@ -144,6 +144,7 @@ app.post('/', (req, res) => {
         let res3 = retJSON.menu.packages.packageList[2];
         const packagename1 = res1.packageName_TH;
         const packagedetail1 = res1.packageDetail_TH;
+        const packageCode1 = res1.packageCode;
         const packagename2 = res2.packageName_TH;
         const packagedetail2 = res2.packageDetail_TH;
         const packagename3 = res3.packageName_TH;
@@ -167,7 +168,7 @@ app.post('/', (req, res) => {
       title: packagename1,
                     description: packagedetail1,
                     image: new Image({
-                        url: simImg[0], alt: packagename1
+                        url: simImg[0], alt: packageCode1
       }),
     },
   'Select_699': {
