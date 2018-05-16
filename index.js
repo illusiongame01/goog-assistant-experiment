@@ -210,19 +210,47 @@ app.post('/', (req, res) => {
     
     function onHelloHandler(agent) {
         let conv = agent.conv()
-    if (!conv.surface.capabilities.has('actions.capability.MEDIA_OUTPUT')) {
-          conv.ask('Sorry, this device does not support audio playback.');
-          return;
-        }
-        conv.ask(new MediaObject({
-          name: 'Jazz in Paris',
-          url: 'http://storage.googleapis.com/automotive-media/Jazz_In_Paris.mp3',
-          description: 'A funky Jazz tune',
-          icon: new Image({
-            url: 'http://storage.googleapis.com/automotive-media/album_art.jpg',
-            alt: 'Media icon',
-          }),
-        }));
+   conv.ask('Simple Response')
+conv.ask(new Table({
+  title: 'Table Title',
+  subtitle: 'Table Subtitle',
+  image: new Image({
+    url: 'https://avatars0.githubusercontent.com/u/23533486',
+    alt: 'Actions on Google'
+  }),
+  columns: [
+    {
+      header: 'header 1',
+      align: 'CENTER',
+    },
+    {
+      header: 'header 2',
+      align: 'LEADING',
+    },
+    {
+      header: 'header 3',
+      align: 'TRAILING',
+    },
+  ],
+  rows: [
+    {
+      cells: ['row 1 item 1', 'row 1 item 2', 'row 1 item 3'],
+      dividerAfter: false,
+    },
+    {
+      cells: ['row 2 item 1', 'row 2 item 2', 'row 2 item 3'],
+      dividerAfter: true,
+    },
+    {
+      cells: ['row 2 item 1', 'row 2 item 2', 'row 2 item 3'],
+    },
+  ],
+  buttons: new Button({
+    title: 'Button Title',
+    url: 'https://github.com/actions-on-google'
+  }),
+}))
+
         
         agent.add(conv)
     }
