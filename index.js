@@ -218,7 +218,7 @@ app.post('/', (req, res) => {
         }))*/
         let conv = agent.conv()
         const a11yText = 'Google Assistant Bubbles';
-const googleUrl = 'https://google.com';
+const googleUrl = 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s';
 if (!conv.surface.capabilities.has('actions.capability.SCREEN_OUTPUT')) {
   conv.ask('Sorry, try this on a screen device or select the ' +
     'phone surface in the simulator.');
