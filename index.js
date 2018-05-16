@@ -157,6 +157,25 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
+     conv.ask(new BasicCard({
+          text: `This is a basic card.  Text in a basic card can include "quotes" and
+          most other unicode characters including emoji 📱.  Basic cards also support
+          some markdown formatting like *emphasis* or _italics_, **strong** or
+          __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other
+          things like line  \nbreaks`, // Note the two spaces before '\n' required for
+                                       // a line break to be rendered in the card.
+          subtitle: 'This is a subtitle',
+          title: 'Title: this is a title',
+          buttons: new Button({
+            title: 'This is a button',
+            url: 'https://assistant.google.com/',
+          }),
+          image: new Image({
+            url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+            alt: 'Image alternate text',
+          }),
+        }));
+     
         conv.ask(new Carousel({
             items: {
                  'Select_399': {
@@ -169,12 +188,7 @@ app.post('/', (req, res) => {
                     description: packagedetail1,
                     image: new Image({
                         url: simImg[0], alt: packagename1
-      }),  
-      buttons: new Button({
-    title: 'This is a button',
-    url: 'https://assistant.google.com/'
-        })
-              
+      }),                
     },
   'Select_699': {
       'synonyms': [
