@@ -170,6 +170,15 @@ app.post('/', (req, res) => {
                     image: new Image({
                         url: simImg[0], alt: packageCode1
       }),
+                     
+            buttons: [
+                {
+                    "title": "packagename1",
+                    "openUrlAction": {
+                        "url": "https://www.google.com"
+                    }
+                }
+            ]
     },
   'Select_699': {
       'synonyms': [
