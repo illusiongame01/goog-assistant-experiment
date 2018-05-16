@@ -173,9 +173,9 @@ app.post('/', (req, res) => {
                      
             buttons: [
                 {
-                    "title": "packagename1",
-                    "openUrlAction": {
-                        "url": "https://www.google.com"
+                    title: packagename1,
+                    openUrlAction: {
+                        url: "https://www.google.com"
                     }
                 }
             ]
