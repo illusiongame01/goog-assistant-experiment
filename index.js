@@ -199,7 +199,7 @@ app.post('/', (req, res) => {
         }))
      
      
-      agent.add(new Card({
+      conv.ask(new Card({
             title: `Sim 2 Fly`,
             imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
             text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
