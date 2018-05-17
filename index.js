@@ -1,10 +1,10 @@
 /*const { SimpleResponse, Carousel , Image , BasicCard , BrowseCarousel} = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');*/
-const {  dialogflow,  BasicCard,  BrowseCarousel,  Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const {  dialogflow,  BasicCard,  BrowseCarousel, BrowseCarouselItem , Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
-const { Card, Suggestion , BrowseCarouselItem} = require('dialogflow-fulfillment')
+const { Card, Suggestion } = require('dialogflow-fulfillment')
 
 
 const https = require('./synchttps')
@@ -197,7 +197,7 @@ app.post('/', (req, res) => {
         speech: 'อุ่นใจขอแนะนำ',
         text: 'อุ่นใจขอแนะนำ'
     }))
-    /*conv.ask(new BrowseCarousel({
+    conv.ask(new BrowseCarousel({
           items: {          
                  'option1' : {
                     "title": "hi",
@@ -224,7 +224,7 @@ app.post('/', (req, res) => {
                     }
                   }
           },
-        }));*/
+        }));
         
        /* conv.ask(new BasicCard({
           text: `This is a basic card.  Text in a basic card can include "quotes" and
@@ -244,7 +244,7 @@ app.post('/', (req, res) => {
             alt: 'Image alternate text',
           }),
         }));*/
-        conv.ask(new BrowseCarousel({
+        /*conv.ask(new BrowseCarousel({
           items: [
             new BrowseCarouselItem({
               title: 'Title of item 1',
@@ -267,7 +267,7 @@ app.post('/', (req, res) => {
               footer: 'Item 2 footer',
             }),
           ],
-        }));
+        }));*/
         agent.add(conv)
     }
 
