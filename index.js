@@ -1,4 +1,4 @@
-const { SimpleResponse, Carousel} =    require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const { SimpleResponse, Carousel, Image , BrowseCarouselItem , BrowseCarousel } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
@@ -6,6 +6,20 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
+const {
+  dialogflow,
+  BasicCard,
+  BrowseCarousel,
+  BrowseCarouselItem,
+  Button,
+  Carousel,
+  Image,
+  LinkOutSuggestion,
+  List,
+  MediaObject,
+  Suggestions,
+  SimpleResponse,
+ } = require('actions-on-google');
 
 const https = require('./synchttps')
 
@@ -92,20 +106,20 @@ app.post('/', (req, res) => {
         let conv = agent.conv()
         conv.ask(new SimpleResponse({
             speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ✈️'
+            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ??'
         }))
         conv.ask(new Carousel({
             items: {
                 'Select_399': {
                     title: `Sim 2 Fly 399`,
-                    description: `เอเชีย, ออสเตรเลีย 🗼`,
+                    description: `เอเชีย, ออสเตรเลีย ??`,
                     image: new Image({
                         url: simImg[0], alt: 'Sim2Fly 399'
                     })
                 },
                 'Select_899': {
                     title: `Sim 2 Fly 899`,
-                    description: "ยุโรป อเมริกา และอื่น 🌎",
+                    description: "ยุโรป อเมริกา และอื่น ??",
                     image: new Image({
                         url: simImg[1], alt: 'Sim2Fly 899'
                     })
@@ -122,7 +136,7 @@ app.post('/', (req, res) => {
         agent.add(conv)
     }
     
- async function bestSellerHandler(agent) {
+    async function bestSellerHandler(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
@@ -145,7 +159,6 @@ app.post('/', (req, res) => {
         let res3 = retJSON.menu.packages.packageList[2];
         const packagename1 = res1.packageName_TH;
         const packagedetail1 = res1.packageDetail_TH;
-        const packageCode1 = res1.packageCode;
         const packagename2 = res2.packageName_TH;
         const packagedetail2 = res2.packageDetail_TH;
         const packagename3 = res3.packageName_TH;
@@ -156,81 +169,66 @@ app.post('/', (req, res) => {
            // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
             speech: 'อุ่นใจขอแนะนำ ' + greeting,
             text: greeting
-        }))     
-   
-        conv.ask(new Carousel({
+        }))
+        
+         conv.ask(new BrowseCarousel({
             items: {
-                 'Select_399': {
-      'synonyms': [
-        packagename1,
-        packagename2,
-        packagename3,
-      ],
-      title: packagename1,
+                'Select_399': {
+                    
+                    title: packagename1,
+                    
                     description: packagedetail1,
+                    
                     image: new Image({
-                    url: simImg[0], alt: packagename1                  
-      }),                
-    },
-  'Select_699': {
-      'synonyms': [
-        'Google Home Assistant',
-        'Assistant on the Google Home',
-    ],
-        title: packagename2 ,
+                        url: simImg[0], alt: packagename1,
+                        
+                    }) 
+                  
+
+                },
+                'Select_899': {
+                    title: packagename2 ,
                     description: packagedetail2 ,
-                    image: new Image({
-                        url: simImg[1], alt: packagename2
-                    }),
-    },
-    'Select_600': {
-      'synonyms': [
-        'Google Pixel XL',
-        'Pixel',
-        'Pixel XL',
-      ],
-     title: packagename3 ,
-                    description: packagedetail3 ,
-                    image: new Image({
-                        url: simImg[2], alt: packagename3 
-                    })
                    
+                    image: new Image({
+                        url: simImg[1], alt: packagename2,
+                       
+                    })
+                },
+                'Select_600': {
+                    title: packagename3 ,
+                    description: packagedetail3 ,
+                    
+                    image: new Image({
+                        url: simImg[2], alt: packagename3,
+                       
+                    })
                 }
             }
-        }))    
+        }))
         agent.add(conv)
-       
     }
+    
+    function sim2fly(agent) {
+        
+        agent.add("อุ่นใจแนะนำ Sim 2 Fly ราคาประหยัดครับ")
+        agent.add(new Card({
+            title: `Sim 2 Fly`,
+            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+            text: `Sim 2 Fly โรมมิ่ง ราคาประหยัด`,
+            buttonText: `ดูข้อมูลเพิ่มเติม`,
+            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
+        }))
+    }
+
 
     function onTopHandler(agent) {
         agent.add(`<speak>สามารถเลือกแพกเกจเสริมได้ที่แอป My <say-as interpret-as="verbatim">AIS</say-as> ครับ</speak>`)
         agent.add(new Suggestion(`Open MY AIS`))
     }
-    
-    function onHelloHandler(agent) {
-   
-           new Card({
-         
-            title: `Sim 2 Fly`,
-            imageUrl: `http://www.likemecase.com/wp-content/uploads/2016/10/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B8%B9%E0%B8%99%E0%B8%84%E0%B8%B9%E0%B9%88-%E0%B8%8A%E0%B8%B2%E0%B8%A2-%E0%B8%AB%E0%B8%8D%E0%B8%B4%E0%B8%87-%E0%B9%83%E0%B8%AA%E0%B9%88%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B9%89%E0%B8%AD-Love-U-500x500.png`,
-            text: `<a href="https://www.w3schools.com">Sim 2 Fly โรมมิ่ง ราคาประหยัด</a>`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-          
-        });  
-           /*  new Card({
-         
-            title: `Sim 2 Fly`,
-            imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
-            text: `<a href="https://www.w3schools.com">Sim 2 Fly โรมมิ่ง ราคาประหยัด</a>`,
-            buttonText: `ดูข้อมูลเพิ่มเติม`,
-            buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
-          
-        }))   */                 
-         
-    }
 
     async function balanceHandler(agent) {
+             
         let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -240,7 +238,16 @@ app.post('/', (req, res) => {
             agent: false,
         })
         agent.add(`คุณมียอดเงินคงเหลือ ${retJSON.balance} บาท สนใจเติมเงินมั้ยครับ`)
-        agent.add(new Suggestion(`Open MY AIS`))      
+        agent.add(new Suggestion(`Open MY AIS`))
+        
+        agent.add(new Card({
+            title: `ยอดเงิน`,
+            imageUrl: `https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif`,
+            text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
+            
+        }))
+
+        
     }
 
     let intentMap = new Map()
@@ -248,8 +255,9 @@ app.post('/', (req, res) => {
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('Ontop-Promotion', bestSellerHandler)
-   // intentMap.set('Balance', balanceHandler)
-    intentMap.set('Balance', onHelloHandler)
+    intentMap.set('Balance', balanceHandler)
+    intentMap.set('ir:roaming', sim2fly)
+    //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
 
