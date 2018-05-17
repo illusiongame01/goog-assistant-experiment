@@ -4,7 +4,7 @@ const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
-const { Card, Suggestion , BrowseCarousel , BrowseCarouselItem } = require('dialogflow-fulfillment')
+const { Card, Suggestion , BrowseCarousel } = require('dialogflow-fulfillment')
 
 
 const https = require('./synchttps')
