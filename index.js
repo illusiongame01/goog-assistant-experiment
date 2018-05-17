@@ -14,7 +14,7 @@ const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
-const { Carousel } = require('actions-on-google');
+
 
 const https = require('./synchttps')
 
@@ -219,8 +219,23 @@ app.post('/', (req, res) => {
     }
     
     function onHelloHandler(agent) {
-       let conv = agent.conv()
-      agent.add(new Card({
+   
+      agent.add(
+             
+             new List({
+  title: 'List Title',
+  items: {
+    // Add the first item to the list
+    option1: {      
+      title: 'Title of First List Item',
+      description: 'This is a description of a list item.',
+      image: new Image({
+        url: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
+        alt: 'Image alternate text',
+      }),
+    },
+  }}));
+           /*  new Card({
          
             title: `Sim 2 Fly`,
             imageUrl: `https://store.ais.co.th/media/wysiwyg/product/product-description/Sim/SIM2Fly_LINEHome1040x1040_Compress.jpg`,
@@ -228,7 +243,7 @@ app.post('/', (req, res) => {
             buttonText: `ดูข้อมูลเพิ่มเติม`,
             buttonUrl: `http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s`,
           
-        }))                    
+        }))   */                 
          
     }
 
