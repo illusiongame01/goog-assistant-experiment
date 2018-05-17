@@ -213,9 +213,7 @@ app.post('/', (req, res) => {
    
       agent.add(
              
-             new List({
-  title: 'List Title',
-  items: {
+ 
     // Add the first item to the list
     option1: {      
       title: 'Title of First List Item',
@@ -225,7 +223,7 @@ app.post('/', (req, res) => {
         alt: 'Image alternate text',
       }),
     },
-  }}));
+  );
            /*  new Card({
          
             title: `Sim 2 Fly`,
