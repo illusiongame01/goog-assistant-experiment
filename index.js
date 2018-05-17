@@ -19,7 +19,7 @@ const {
   MediaObject,
   Suggestions,
   SimpleResponse,
- } = require('actions-on-google');
+ } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
