@@ -6,20 +6,6 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-const {
-  dialogflow,
-  BasicCard,
-  BrowseCarousel,
-  BrowseCarouselItem,
-  Button,
-  Carousel,
-  Image,
-  LinkOutSuggestion,
-  List,
-  MediaObject,
-  Suggestions,
-  SimpleResponse,
- } = require('actions-on-google');
 
 const https = require('./synchttps')
 
