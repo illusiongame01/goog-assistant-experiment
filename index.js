@@ -82,45 +82,7 @@ app.post('/', (req, res) => {
         agent.add(`I am sorry. Can you repeat again`)
     }
 
-    function sim2fly2(agent) {
-        const simImg = [
-            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
-            'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
-            'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg'
-        ]
-
-        let conv = agent.conv()
-        conv.ask(new SimpleResponse({
-            speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
-            text: 'อุ่นใจแนะนำ Sim2Fly ราคาประหยัดครับ ??'
-        }))
-        conv.ask(new Carousel({
-            items: {
-                'Select_399': {
-                    title: `Sim 2 Fly 399`,
-                    description: `เอเชีย, ออสเตรเลีย ??`,
-                    image: new Image({
-                        url: simImg[0], alt: 'Sim2Fly 399'
-                    })
-                },
-                'Select_899': {
-                    title: `Sim 2 Fly 899`,
-                    description: "ยุโรป อเมริกา และอื่น ??",
-                    image: new Image({
-                        url: simImg[1], alt: 'Sim2Fly 899'
-                    })
-                },
-                'Select_600': {
-                    title: `ซิม เน็ต มาราธอน 600`,
-                    description: "ซิม เน็ต มาราธอน 600 บาท (เน็ตไม่อั้นเร็ว 1 Mbps นาน 6 เดือน)",
-                    image: new Image({
-                        url: simImg[2], alt: 'ซิม เน็ต มาราธอน 600'
-                    })
-                }
-            }
-        }))
-        agent.add(conv)
-    }
+   
     
     async function bestSellerHandler(agent) {
         const simImg = [
@@ -231,7 +193,7 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('Ontop', sim2fly2)
+    intentMap.set('Ontop', bestSellerHandler)
     intentMap.set('Balance', balanceHandler)
     //intentMap.set('ir:roaming', sim2fly)
     //intentMap.set('top-up', balanceHandler)
