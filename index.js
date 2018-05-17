@@ -82,7 +82,7 @@ app.post('/', (req, res) => {
         agent.add(`I am sorry. Can you repeat again`)
     }
 
-    function sim2fly(agent) {
+    function sim2fly2(agent) {
         const simImg = [
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
             'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
@@ -231,7 +231,7 @@ app.post('/', (req, res) => {
 
     intentMap.set('Default Welcome Intent', balanceHandler)
     intentMap.set('Default Fallback Intent', fallback)
-    intentMap.set('Ontop-Promotion', sim2fly)
+    intentMap.set('Ontop-Promotion', sim2fly2)
     intentMap.set('Balance', balanceHandler)
     //intentMap.set('ir:roaming', sim2fly)
     //intentMap.set('top-up', balanceHandler)
