@@ -14,6 +14,7 @@ const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
+const { Carousel } = require('actions-on-google').ActionsSdkApp.ActionsSdkApp
 
 
 const https = require('./synchttps')
