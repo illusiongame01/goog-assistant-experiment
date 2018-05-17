@@ -157,7 +157,7 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-         conv.ask(new BrowseCarousel({
+         conv.ask(new Carousel({
             items: {
                 'Select_399': {
                     
