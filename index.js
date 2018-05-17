@@ -197,34 +197,40 @@ app.post('/', (req, res) => {
         speech: 'อุ่นใจขอแนะนำ',
         text: 'อุ่นใจขอแนะนำ'
     }))
-    conv.ask(new BrowseCarousel({
-          items: {          
-                 'option1' : {
-                    "title": "hi",
-                    "description": "hi",
-                    "footer": "foot",
-                    "image": new Image({
-                      "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg",
-                      "accessibilityText": "hi"
-                    }),
-                    "openUrlAction": {
-                      "url": "http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s"
-                    }
-                  },
-                  'option2' : {
-                    "title": "hi2",
-                    "description": "hi2",
-                    "footer": "foot",
-                    "image": new Image({
-                      "url": "https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg",
-                      "accessibilityText": "hi2"
-                    }),
-                    "openUrlAction": {
-                      "url": "http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s"
-                    }
-                  }
-          },
-        }));
+ 
+        conv.ask(new List({
+  title: 'List Title',
+  items: {
+    // Add the first item to the list
+    'select_1': {     
+      title: 'Title of First List Item',
+      description: 'This is a description of a list item.',
+      image: new Image({
+        url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
+        alt: 'Image alternate text',
+      }),
+    },
+    // Add the second item to the list
+   'select_2': {      
+      title: 'Google Home',
+      description: 'Google Home is a voice-activated speaker powered by ' +
+        'the Google Assistant.',
+      image: new Image({
+        url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
+        alt: 'Google Home',
+      }),
+    },
+    // Add the third item to the list
+    'select_3': {    
+      title: 'Google Pixel',
+      description: 'Pixel. Phone by Google.',
+      image: new Image({
+        url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
+        alt: 'Google Pixel',
+      }),
+    },
+  },
+}));
         
        /* conv.ask(new BasicCard({
           text: `This is a basic card.  Text in a basic card can include "quotes" and
