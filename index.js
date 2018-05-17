@@ -1,4 +1,4 @@
-const { SimpleResponse, Carousel , Image  } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const { SimpleResponse, Carousel , Image , BrowseCarousel  } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
@@ -189,6 +189,40 @@ app.post('/', (req, res) => {
 
         
     }
+    
+    function onHandler(agent){
+      let conv = agent.conv()
+    conv.ask(new SimpleResponse({
+       // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+        speech: 'อุ่นใจขอแนะนำ',
+        text: ''อุ่นใจขอแนะนำ'
+    }))
+    conv.ask(new BrowseCarousel({
+          items: [
+            new BrowseCarouselItem({
+              title: 'Title of item 1',
+              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
+              description: 'Description of item 1',
+              image: new Image({
+                url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
+                alt: 'test',
+              }),
+              footer: 'Item 1 footer',
+            }),
+            new BrowseCarouselItem({
+              title: 'Title of item 2',
+              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
+              description: 'Description of item 2',
+              image: new Image({
+                url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
+                alt: 'Test2',
+              }),
+              footer: 'Item 2 footer',
+            }),
+          ],
+        }));
+        agent.add(conv)
+    }
 
     let intentMap = new Map()
 
@@ -196,7 +230,7 @@ app.post('/', (req, res) => {
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('Ontop', bestSellerHandler)
     intentMap.set('Balance', balanceHandler)
-    intentMap.set('sample', sim2fly)
+    intentMap.set('sample', onHandler)
     //intentMap.set('top-up', balanceHandler)
     agent.handleRequest(intentMap)
 })
