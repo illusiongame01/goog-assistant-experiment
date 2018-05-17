@@ -198,7 +198,7 @@ app.post('/', (req, res) => {
         text: 'อุ่นใจขอแนะนำ'
     }))
     conv.ask(new BrowseCarousel({
-          items: [
+          items: {
             new BrowseCarouselItem({
               title: 'Title of item 1',
               url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
@@ -219,7 +219,7 @@ app.post('/', (req, res) => {
               }),
               footer: 'Item 2 footer',
             }),
-          ],
+             },
         }));
         agent.add(conv)
     }
