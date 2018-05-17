@@ -198,28 +198,32 @@ app.post('/', (req, res) => {
         text: 'อุ่นใจขอแนะนำ'
     }))
     conv.ask(new BrowseCarousel({
-          items: [
-            new BrowseCarouselItem({
-              title: 'Title of item 1',
-              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
-              description: 'Description of item 1',
-              image: new Image({
-                url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
-                alt: 'test',
-              }),
-              footer: 'Item 1 footer',
-            }),
-            new BrowseCarouselItem({
-              title: 'Title of item 2',
-              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
-              description: 'Description of item 2',
-              image: new Image({
-                url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
-                alt: 'Test2',
-              }),
-              footer: 'Item 2 footer',
-            }),
-             ],
+          items: {          
+                 'option1' : {
+                    "title": "hi",
+                    "description": "hi",
+                    "footer": "foot",
+                    "image": {
+                      "url": "https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg",
+                      "accessibilityText": "hi"
+                    },
+                    "openUrlAction": {
+                      "url": "http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s"
+                    }
+                  },
+                  'option2' : {
+                    "title": "hi2",
+                    "description": "hi2",
+                    "footer": "foot",
+                    "image": {
+                      "url": "https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg",
+                      "accessibilityText": "hi2"
+                    },
+                    "openUrlAction": {
+                      "url": "http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s"
+                    }
+                  }
+          },
         }));
         agent.add(conv)
     }
