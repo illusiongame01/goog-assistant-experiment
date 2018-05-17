@@ -195,7 +195,7 @@ app.post('/', (req, res) => {
     conv.ask(new SimpleResponse({
        // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
         speech: 'อุ่นใจขอแนะนำ',
-        text: ''อุ่นใจขอแนะนำ'
+        text: 'อุ่นใจขอแนะนำ'
     }))
     conv.ask(new BrowseCarousel({
           items: [
