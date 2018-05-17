@@ -1,10 +1,10 @@
 /*const { SimpleResponse, Carousel , Image , BasicCard , BrowseCarousel} = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');*/
-const {  dialogflow,  BasicCard,  BrowseCarousel,  BrowseCarouselItem,  Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const {  dialogflow,  BasicCard,  BrowseCarousel,  Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
 const { WebhookClient } = require('dialogflow-fulfillment')
-const { Card, Suggestion } = require('dialogflow-fulfillment')
+const { Card, Suggestion , BrowseCarouselItem} = require('dialogflow-fulfillment')
 
 
 const https = require('./synchttps')
