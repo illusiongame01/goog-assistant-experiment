@@ -185,12 +185,7 @@ app.post('/', (req, res) => {
             text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
             
         }))
-         agent.add(new Card({
-            title: `ยอดเงิน`,
-            imageUrl: `https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif`,
-            text: `<center><font color="green">คุณมียอดเงินคงเหลือ <b>${retJSON.balance}</b> บาท</font></center>`
-            
-        }))
+     
 
         
     }
