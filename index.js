@@ -1,4 +1,4 @@
-const { SimpleResponse, Carousel , Image ,BrowseCarousel } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
+const { SimpleResponse, Carousel , Image  } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');
 
 const processor = require('./processor')
 const express = require('express'),
