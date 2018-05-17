@@ -157,43 +157,34 @@ app.post('/', (req, res) => {
             text: greeting
         }))
         
-         conv.ask(new Carousel({
+        conv.ask(new Carousel({
             items: {
                 'Select_399': {
-                    
                     title: packagename1,
-                    
                     description: packagedetail1,
-                    
                     image: new Image({
-                        url: simImg[0], alt: packagename1,
-                        
-                    }) 
-                  
-
+                        url: simImg[0], alt: packagename1
+                    })
                 },
                 'Select_899': {
-                    title: packagename2 ,
+                     title: packagename2 ,
                     description: packagedetail2 ,
-                   
                     image: new Image({
-                        url: simImg[1], alt: packagename2,
-                       
+                        url: simImg[1], alt: packagename2
                     })
                 },
                 'Select_600': {
-                    title: packagename3 ,
+                     title: packagename3 ,
                     description: packagedetail3 ,
-                    
                     image: new Image({
-                        url: simImg[2], alt: packagename3,
-                       
+                        url: simImg[2], alt: packagename3 
                     })
                 }
             }
         }))
         agent.add(conv)
     }
+
     
     function sim2fly(agent) {
         
