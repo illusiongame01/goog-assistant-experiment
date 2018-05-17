@@ -226,7 +226,7 @@ app.post('/', (req, res) => {
           },
         }));*/
         
-        conv.ask(new BasicCard({
+       /* conv.ask(new BasicCard({
           text: `This is a basic card.  Text in a basic card can include "quotes" and
           most other unicode characters including emoji 📱.  Basic cards also support
           some markdown formatting like *emphasis* or _italics_, **strong** or
@@ -243,6 +243,30 @@ app.post('/', (req, res) => {
             url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
             alt: 'Image alternate text',
           }),
+        }));*/
+        conv.ask(new BrowseCarousel({
+          items: [
+            new BrowseCarouselItem({
+              title: 'Title of item 1',
+              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
+              description: 'Description of item 1',
+              image: new Image({
+                url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_899_b.jpg',
+                alt: 'hello',
+              }),
+              footer: 'Item 1 footer',
+            }),
+            new BrowseCarouselItem({
+              title: 'Title of item 2',
+              url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
+              description: 'Description of item 2',
+              image: new Image({
+                url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
+                alt: 'hell',
+              }),
+              footer: 'Item 2 footer',
+            }),
+          ],
         }));
         agent.add(conv)
     }
