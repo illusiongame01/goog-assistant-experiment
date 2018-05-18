@@ -191,7 +191,7 @@ app.post('/', (req, res) => {
         
     }
     
-    function onHandler(agent){
+   async function onHandler(agent){
       let conv = agent.conv()
     conv.ask(new SimpleResponse({
        // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
