@@ -1,6 +1,6 @@
 /*const { SimpleResponse, Carousel , Image , BasicCard , BrowseCarousel} = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdk');*/
-const {  dialogflow,  BasicCard,  BrowseCarousel, BrowseCarouselItem , Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdkactionssdk');
-
+const {  dialogflow,  BasicCard , Button,  Carousel,  Image,  LinkOutSuggestion,  List,  MediaObject,  Suggestions,  SimpleResponse } = require('dialogflow-fulfillment/node_modules/actions-on-google/dist/service/actionssdkactionssdk');
+const { BrowseCarousel, BrowseCarouselItem } = require('actions-on-google');
 const processor = require('./processor')
 const express = require('express'),
     bodyParser = require('body-parser')
