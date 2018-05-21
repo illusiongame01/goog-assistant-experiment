@@ -217,7 +217,7 @@ app.post('/', (req, res) => {
     //}),
       },
    // new BrowseCarouselItem({
-     'select1' : {
+     'select2' : {
       title: 'Title of item 2',
       url: googleUrl,
       description: 'Description of item 2',
