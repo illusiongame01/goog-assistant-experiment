@@ -300,7 +300,7 @@ app.post('/', (req, res) => {
     intentMap.set('Ontop', bestSellerHandler)
     intentMap.set('Balance', balanceHandler)
     intentMap.set('sample', onHandler)
-    intentMap.set('sample', onHandler2)
+    intentMap.set('sample2', onHandler2)
     agent.handleRequest(intentMap)
 })
 
