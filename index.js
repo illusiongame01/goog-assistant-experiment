@@ -203,8 +203,9 @@ app.post('/', (req, res) => {
    const googleUrl = 'https://google.com';
 
   conv.ask(new BrowseCarousel({
-  items: [
-    new BrowseCarouselItem({
+  items: {
+   // new BrowseCarouselItem({
+      'select1':{
       title: 'Title of item 1',
       url: googleUrl,
       description: 'Description of item 1',
@@ -213,8 +214,10 @@ app.post('/', (req, res) => {
         alt: a11yText,
       }),
       footer: 'Item 1 footer',
-    }),
-    new BrowseCarouselItem({
+    //}),
+      },
+   // new BrowseCarouselItem({
+     'select1' : {
       title: 'Title of item 2',
       url: googleUrl,
       description: 'Description of item 2',
@@ -223,8 +226,9 @@ app.post('/', (req, res) => {
         alt: a11yText,
       }),
       footer: 'Item 2 footer',
-    }),
-  ]
+    //}),
+    },
+    }
     }));
  
        /* conv.ask(new List({
