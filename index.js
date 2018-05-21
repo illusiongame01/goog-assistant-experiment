@@ -215,25 +215,7 @@ app.post('/', (req, res) => {
             url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
             alt: 'Image alternate text',
           }),
-        }));
-         conv.ask(new BasicCard({
-          text: `This is a basic card.  Text in a basic card can include "quotes" and
-          most other unicode characters including emoji 📱.  Basic cards also support
-          some markdown formatting like *emphasis* or _italics_, **strong** or
-          __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other
-          things like line  \nbreaks`, // Note the two spaces before '\n' required for
-                                       // a line break to be rendered in the card.
-          subtitle: 'This is a subtitle',
-          title: 'Title: this is a title',
-          buttons: new Button({
-            title: 'This is a button',
-            url: 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s',
-          }),
-          image: new Image({
-            url: 'https://store.ais.co.th/media/catalog/product/cache/2/image/320x/040ec09b1e35df139433887a97daa66f/s/i/sim_marathon850_3.jpg',
-            alt: 'Image alternate text',
-          }),
-        }));
+        }));        
         agent.add(conv)
    }
     
