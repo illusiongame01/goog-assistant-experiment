@@ -193,6 +193,11 @@ app.post('/', (req, res) => {
    
    async function onHandler2(agent){
         let conv = agent.conv()
+          conv.ask(new SimpleResponse({
+       // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
+        speech: 'อุ่นใจขอแนะนำ',
+        text: 'อุ่นใจขอแนะนำ'
+        }))
          conv.ask(new BasicCard({
           text: `This is a basic card.  Text in a basic card can include "quotes" and
           most other unicode characters including emoji 📱.  Basic cards also support
@@ -217,12 +222,12 @@ app.post('/', (req, res) => {
     
    async function onHandler(agent){
       let conv = agent.conv()
- /*   conv.ask(new SimpleResponse({
+  conv.ask(new SimpleResponse({
        // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
         speech: 'อุ่นใจขอแนะนำ',
         text: 'อุ่นใจขอแนะนำ'
     }))
-        
+    /*      
    const a11yText = 'Google Assistant Bubbles';
    const googleUrl = 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s';
       conv.ask(new BrowseCarousel({
