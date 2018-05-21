@@ -206,55 +206,32 @@ app.post('/', (req, res) => {
         'phone surface in the simulator.');
       return;
     }
-  /* conv.ask(new BrowseCarousel({
+  conv.ask(new BrowseCarousel({
   items: {   
-      'select1':new BrowseCarouselItem({
+      'select1':{
       title: 'Title of item 1',
       url: googleUrl,
       description: 'Description of item 1',
       image: new Image({
         url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
         alt: a11yText,
-      }),
+      },
       footer: 'Item 1 footer',   
       }),   
-     'select2' : new BrowseCarouselItem({
+     'select2' : {
       title: 'Title of item 2',
       url: googleUrl,
       description: 'Description of item 2',
       image: new Image({
         url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
         alt: a11yText,
-      }),
+      },
       footer: 'Item 2 footer',
     }),    
     }
-    }));*/
-       
-   conv.ask(new BrowseCarousel({
-      items: [
-        new BrowseCarouselItem({
-          title: 'Title of item 1',
-          url: googleUrl,
-          description: 'Description of item 1',
-          image: new Image({
-            url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
-            alt: a11yText
-          }),
-          footer: 'Item 1 footer'
-        }),
-        new BrowseCarouselItem({
-          title: 'Title of item 2',
-          url: googleUrl,
-          description: 'Description of item 2',
-          image: new Image({
-            url: 'https://store.ais.co.th/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/12call_sim2fly_399_b_1.jpg',
-            alt: a11yText
-          }),
-          footer: 'Item 2 footer'
-        }),
-      ],
     }));
+       
+  
  
        /* conv.ask(new List({
   title: 'List Title',
