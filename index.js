@@ -201,7 +201,11 @@ app.post('/', (req, res) => {
         
    const a11yText = 'Google Assistant Bubbles';
    const googleUrl = 'https://google.com';
-
+    if (!conv.surface.capabilities.has('actions.capability.SCREEN_OUTPUT')) {
+      conv.ask('Sorry, try this on a screen device or select the ' +
+        'phone surface in the simulator.');
+      return;
+    }
    conv.ask(new BrowseCarousel({
   items: {   
       'select1':new BrowseCarouselItem({
