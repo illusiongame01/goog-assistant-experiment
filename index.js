@@ -201,11 +201,7 @@ app.post('/', (req, res) => {
         
    const a11yText = 'Google Assistant Bubbles';
    const googleUrl = 'http://www.ais.co.th/roaming/sim2fly/?gclid=CjwKCAjww6XXBRByEiwAM-ZUIFrTKb_iEnZqewsMkYG8kFvliueHR1sX3-cFfQPo_hvcGtiRbo_68RoC1SIQAvD_BwE&s_kwcid=AL!897!3!259718486577!e!!g!!sim2fly&ef_id=WnKrygAAAdEwtceS:20180502080316:s';
-    if (!conv.surface.capabilities.has('actions.capability.SCREEN_OUTPUT')) {
-      conv.ask('Sorry, try this on a screen device or select the ' +
-        'phone surface in the simulator.');
-      return;
-    }
+
      conv.ask(new BrowseCarousel({
   items: {   
       'select1':{
@@ -230,8 +226,7 @@ app.post('/', (req, res) => {
     },    
     }
 }));
-        agent.add(conv)
-}
+
   
  
        /* conv.ask(new List({
