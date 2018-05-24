@@ -27,9 +27,6 @@ app.get('/', async (request, response) => {
     response.send(retJSON.menu.packages.packageList[0])
     response.end()
 })
-app.get('/index', (req, res) => {
-  res.sendFile('index.html');
-});
 app.get('/Hello', async (request, response) => {
     let retJSON = await https.getJSON({
         host: '110.49.202.87',
