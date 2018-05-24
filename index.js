@@ -7,12 +7,12 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-
+const fs = require('fs');
 const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
 
-
+app.use(express.staticProvider(__dirname + '/'));
 const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
@@ -31,7 +31,17 @@ app.get('/', async (request, response) => {
 })
 app.get('/index',function(request, response){
        
-     response.sendFile('index.html');
+    fs.readFile("index.html", function (error, pgResp) {
+            if (error) {
+                resp.writeHead(404);
+                resp.write('Contents you are looking are Not Found');
+            } else {
+                resp.writeHead(200, { 'Content-Type': 'text/html' });
+                resp.write(pgResp);
+            }
+             
+            resp.end();
+        });
 
 });
 app.get('/Hello', async (request, response) => {
