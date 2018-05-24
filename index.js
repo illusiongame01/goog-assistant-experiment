@@ -193,17 +193,18 @@ app.post('/', (req, res) => {
    
    async function onHandler2(agent){
         let conv = agent.conv()
+        const t= req.body;
           conv.ask(new SimpleResponse({
        // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
         speech: 'อุ่นใจขอแนะนำ',
         text: 'อุ่นใจขอแนะนำ'
         }))
          conv.ask(new BasicCard({
-          text: `This is a basic card.  Text in a basic card can include "quotes" and
+          text: /*`This is a basic card.  Text in a basic card can include "quotes" and
           most other unicode characters including emoji 📱.  Basic cards also support
           some markdown formatting like *emphasis* or _italics_, **strong** or
           __bold__, and ***bold itallic*** or ___strong emphasis___ as well as other
-          things like line  \nbreaks`, // Note the two spaces before '\n' required for
+          things like line  \nbreaks`*/t, // Note the two spaces before '\n' required for
                                        // a line break to be rendered in the card.
           subtitle: 'This is a subtitle',
           title: 'Title: this is a title',
