@@ -11,7 +11,6 @@ const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
 
-app.use(express.staticProvider(__dirname + '/'));
 const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
