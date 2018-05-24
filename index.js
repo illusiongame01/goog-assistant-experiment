@@ -193,7 +193,7 @@ app.post('/', (req, res) => {
    
    async function onHandler2(agent){
         let conv = agent.conv()
-        const t= req.body;
+        const t= JSON.stringify(req.body);
           conv.ask(new SimpleResponse({
        // speech: '<speak>อุ่นใจแนะนำ Sim<sub alias="ทู">2</sub>Fly ราคาประหยัดครับ</speak>',
         speech: 'อุ่นใจขอแนะนำ',
