@@ -7,7 +7,6 @@ const express = require('express'),
 const { WebhookClient } = require('dialogflow-fulfillment')
 const { Card, Suggestion } = require('dialogflow-fulfillment')
 
-const fs = require('fs');
 const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
@@ -29,20 +28,8 @@ app.get('/', async (request, response) => {
     response.send(retJSON.menu.packages.packageList[0])
     response.end()
 })
-app.get('/index',function(request, response){
-       
-    fs.readFile("index.html", function (error, pgResp) {
-            if (error) {
-                resp.writeHead(404);
-                resp.write('Contents you are looking are Not Found');
-            } else {
-                resp.writeHead(200, { 'Content-Type': 'text/html' });
-                resp.write(pgResp);
-            }
-             
-            resp.end();
-        });
-
+app.get('/index', (req, res) => {
+ res.sendFile(path.join(__dirname, './index.html'));
 });
 app.get('/Hello', async (request, response) => {
     let retJSON = await https.getJSON({
