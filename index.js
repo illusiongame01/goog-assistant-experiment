@@ -28,7 +28,7 @@ app.get('/', async (request, response) => {
     response.end()
 })
 app.get('/index', (req, res) => {
- res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile('index.html');
 });
 app.get('/Hello', async (request, response) => {
     let retJSON = await https.getJSON({
