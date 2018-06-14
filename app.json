@@ -1,7 +1,7 @@
 {
   "name": "goog-assistant-experiment",
   "scripts": {
-    "postdeploy": "npm install; node index2.js"
+    "postdeploy": "npm install; node index.js"
   },
   "env": {
   },
