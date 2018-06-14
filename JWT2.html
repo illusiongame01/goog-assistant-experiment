@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title> FunGus V2 test</title>
+  <meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="fungus.js"></script>
+</head>
+<body>
+	<h1>Fungus Javascript</h1>
+	<a href="#" onclick="loginEvent()">Login</a><br>
+	<a href="JWT2.html">Delete</a>
+	<p id="text_app"></p>
+
+	<script type="text/javascript">
+        var clientId = 'KXfzwDbpM/TwR6Zp0lGpl5whJ2Ls2Qs4k1P4tk7HK6g=';
+        //var clientId = 'test';
+		//var platform = 'Browser';
+		var platform = 'Browser';
+		var urlBackend = 'https://10.104.240.216:8443/hummus';
+		var ptsAppEnvironmentType = 'partner_iot';
+        var urlRegister = 'http://52.220.61.244:7777/appAuthen';
+        //var urlRegister = 'http://www.fakeresponse.com/api/?sleep=10';
+		//var urlRegister = 'http://10.104.240.120:9000/api/appAuthen_mockup.php'
+        //var urlRegister = 'http://www.fakeresponse.com/api/?data={%22Hello%22:%22World%22}';
+		//var urlRegister = 'http://localhost:56221/appAuthen_mockup.php';
+		var redirect_uri = 'http://localhost:4200/JWT2.html';
+		//var redirect_uri = 'Test';
+		//karnkata07@gmail.com
+
+		$(document).ready(function() {
+			// GET query string OL5
+			var q = getUrlVars()["ol5"];
+			if(q) {
+				var res = appAuthen(q,urlRegister);
+				$('#text_app').html(JSON.stringify(res));
+				//$('#text_app').html(res.responseText);
+			}
+
+		});
+
+		function loginEvent()
+		{
+		    var resp = loginB2C();
+		    $('#text_app').html(JSON.stringify(resp));
+		}
+	</script>
+</body>
+</html>
