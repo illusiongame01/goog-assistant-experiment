@@ -8,8 +8,8 @@ app.get('/',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
-app.get('/about',function(req,res){
-  res.sendFile(path.join(__dirname+'/JWT2.html'));
+app.get('/error',function(req,res){
+  res.sendFile(path.join(__dirname+'/error404.html'));
 });
 
 app.get('/sitemap',function(req,res){
