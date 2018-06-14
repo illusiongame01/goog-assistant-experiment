@@ -16,6 +16,14 @@ app.get('/sitemap',function(req,res){
   res.sendFile(path.join(__dirname+'/JWT2.html'));
 });
 
-app.listen(4200);
+
+app.listen(PORT, (error) => {
+    if (error) {
+        console.log(error)
+    }
+    else {
+        console.log(`listening at port ${PORT}`)
+    }
+})
 
 console.log("Running at Port 4200");
