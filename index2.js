@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 app.get('/',function(req,res){
        
-     res.sendFile('index.html');
+     res.sendFile('JWT2.html');
 
 });
 
