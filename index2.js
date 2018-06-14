@@ -1,7 +1,28 @@
-    const https = require("https");
- 
+const processor = require('./processor')
+const express = require('express'),
+    bodyParser = require('body-parser')
 
-    const unirest = require('unirest');
-    unirest.get("https://10.137.28.40:8443/GoogleAssistant/GetCurrentBalacnce/66932780014")
-    .strictSSL(false)
-    .end(console.log)
+
+const https = require('./synchttps')
+
+const PORT = process.env.PORT || 4200
+
+const app = express(bodyParser.json())
+
+app.use(bodyParser.json())
+
+app.get('/',function(req,res){
+       
+     res.sendFile('index.html');
+
+});
+
+
+app.listen(PORT, (error) => {
+    if (error) {
+        console.log(error)
+    }
+    else {
+        console.log(`listening at port ${PORT}`)
+    }
+})
