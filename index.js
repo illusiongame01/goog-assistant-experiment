@@ -4,7 +4,7 @@ var path    = require("path");
 const PORT = process.env.PORT || 4200
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/error404.html'));
+  res.sendFile(path.join(__dirname+'/JWT2.html'));
   //__dirname : It will resolve to your project folder.
 });
 
