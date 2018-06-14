@@ -7,7 +7,7 @@ const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
 
-const app = express(bodyParser.json())
+const app = express();
 
 app.use(bodyParser.json())
 
