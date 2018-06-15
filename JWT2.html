@@ -5,8 +5,11 @@
   <meta charset="utf-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body onload="loginEvent()">
-
+<body>
+	<h1>Fungus Javascript</h1>
+	<a href="#" onclick="loginEvent()">Login</a><br>
+	<a href="JWT2.html">Delete</a>
+	<p id="text_app"></p>
 
 	<script type="text/javascript">
         var clientId = 'iFGmdfMcF4eekBruLfRmZGowHBICwdnF7Qc1IjtW5f+7Fekm9qSeyA==';
@@ -23,7 +26,6 @@
 		var redirect_uri = 'https://hellworldmyproject.herokuapp.com/';
 		//var redirect_uri = 'Test';
 		//karnkata07@gmail.com
-
 		$(document).ready(function() {
 			// GET query string OL5
 			var q = getUrlVars()["ol5"];
@@ -32,9 +34,7 @@
 				$('#text_app').html(JSON.stringify(res));
 				//$('#text_app').html(res.responseText);
 			}
-
 		});
-
 		function loginEvent()
 		{
 		    var resp = loginB2C();
@@ -53,15 +53,12 @@
   }
   return vars;
 }
-
 function loginB2C()
 {
-
     if (!validateConfigLogin())
     {
         return getResultMessage(90001, "[Fungus] (LoginB2C) Missing key identify");
     }
-
     try
     {
         if (!validateURL(redirect_uri) || !validateURL(urlRegister) || !validateURL(urlBackend))
@@ -73,24 +70,19 @@ function loginB2C()
     {
         return getResultMessage(90004, "[Fungus] (LoginB2C) Invalid Parameter");
     }
-
     //var link_srfp = "https://pantry-srfp.mimotech.org/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);
-	var link_srfp = "http://iot-srf.ais.co.th:8080" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
+	var link_srfp = "http://iot-srf.ais.co.th:8080/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
 	location.href = link_srfp;
 }
-
 function appAuthen(q,urlRegister)
 {
     var commonResponse = { resultCode: null, developerMessage: null, userMessage: null, moreInfo: null };
     var requestModel = { xApp: null, authCode: null, redirectURL: null, clientId: null, platform: null, ptsAppEnvironmentType: null, ol4: null, privateId: null };
 	var returnObj = new Object();
-
-
     if (!validateConfigLogin())
     {
         return getResultMessage(90001, "[Fungus] (App Authen) Missing key identify");
     }
-
     try
     {
         if (!validateURL(redirect_uri) || !validateURL(urlRegister) || !validateURL(urlBackend))
@@ -102,7 +94,6 @@ function appAuthen(q,urlRegister)
     {
         return getResultMessage(90004, "[Fungus] (App Authen) Invalid Parameter");
     }
-
 	if (IsJsonWebToken(q) == "not jwt")
 	{
 	    return getResultMessage(90010, "(App Authen) JSON Web Token is Incorrect");
@@ -127,12 +118,10 @@ function appAuthen(q,urlRegister)
 	{
 	    return getResultMessage(90005, "(App Authen) Missing Parameter");
 	}
-
 	if (!validateParameters(obj) || !validateConfigAppAuthen())
 	{
 	    return getResultMessage(90003, "[Fungus] (App Authen) Missing Parameter");
 	}
-
 	requestModel.xApp = obj.xApp;
 	requestModel.authCode = obj.authCode;
 	requestModel.ol4 = obj.ol4;
@@ -141,7 +130,6 @@ function appAuthen(q,urlRegister)
 	requestModel["ptsAppEnvironmentType"] = ptsAppEnvironmentType;
 	requestModel["clientId"] = clientId;
 	requestModel["platform"] = platform;
-
     try
     {
         var requestjqXHR = $.ajax({
@@ -162,12 +150,10 @@ function appAuthen(q,urlRegister)
             //alert("Error errorThrown : " + errorThrown); 
             returnObj = jqXHR;
         });
-
         if (!returnObj || !IsJsonString(returnObj.responseText))
         {
             return getResultMessage(90014, "(App Authen) Response Not JSON format");
         }
-
         if(returnObj.status == 200 || returnObj.status == 201)
         {
             if(IsJsonString(returnObj.responseText))
@@ -195,7 +181,6 @@ function appAuthen(q,urlRegister)
                     //returnObj.responseJSON.developerMessage = "(App Authen) Missing Parameter";
                     return getResultMessage(90005, "(App Authen) Missing Parameter");
                 }
-
                 return returnObj.responseJSON;
             }
             else
@@ -234,7 +219,6 @@ function appAuthen(q,urlRegister)
                         //returnObj.responseJSON.developerMessage = "(App Authen) Missing Parameter and HTTP status code was not 200 and 201";
                         return getResultMessage(90005, "(App Authen) Missing Parameter and HTTP status code was not 200 and 201");
                     }
-
                     return returnObj.responseJSON;
                 }
                 else
@@ -257,7 +241,6 @@ function appAuthen(q,urlRegister)
         return getResultMessage(90099, "Unknown Error");
     }
 }
-
 function IsJsonString(str) {
     try {
         JSON.parse(str);
@@ -266,7 +249,6 @@ function IsJsonString(str) {
     }
     return true;
 }
-
 function IsJsonWebToken(str) {
     try {
         parseJwt(str);
@@ -275,7 +257,6 @@ function IsJsonWebToken(str) {
     }
     return "true";
 }
-
 function validateConfigLogin()
 {
     try{
@@ -291,7 +272,6 @@ function validateConfigLogin()
         return false;
     }
 }
-
 function validateConfigAppAuthen() {
     try
     {
@@ -306,7 +286,6 @@ function validateConfigAppAuthen() {
         return false;
     }
 }
-
 function validateParameters(appparam)
 {	
 	//Parameter
@@ -316,7 +295,6 @@ function validateParameters(appparam)
 	}
 	return true;
 }
-
 function validateAppAuthenResponses(appparam)
 {
     // Pantry response
@@ -327,7 +305,6 @@ function validateAppAuthenResponses(appparam)
     }
     return true;
 }
-
 function validateLoginResponse(appparam)
 {
     if (!appparam || !appparam.resultCode || !appparam.developerMessage || !appparam.authCode || !appparam.ol4 || !appparam.privateId || !appparam.xApp)
@@ -336,7 +313,6 @@ function validateLoginResponse(appparam)
     }
     return true;
 }
-
 function validateURL(strUrl)
 {
   //  var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
@@ -348,7 +324,6 @@ function validateURL(strUrl)
     //  return pattern.test(strUrl);
     //var pattern = new RegExp(" /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i");
     //var pattern = new RegExp("/^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff0-9]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;")
-
     //diego perini
     var pattern = new RegExp(
   "^" +
@@ -388,7 +363,6 @@ function validateURL(strUrl)
 );
     return pattern.test(strUrl);
 }
-
 function parseJwt (token) {	
 	try
 	{		
@@ -399,12 +373,10 @@ function parseJwt (token) {
 		// var newArr = JSON.parse(decToken);
 		// newArr.xxxx = 'test';
 		// alert(newArr);
-
 		if(!IsJsonString(decToken))
 		{
 			throw new Error("not json");
 		}
-
 		var appparam = JSON.parse(decToken);
 		//appparam["redirectURL"] = urlBackend;
 		//appparam["ptsAppEnvironmentType"] = ptsAppEnvironmentType;
@@ -420,21 +392,16 @@ function parseJwt (token) {
 			throw new Error("not jwt");
 	}
 };
-
 function base64url(source) {
   // Encode in classical base64
   encodedSource = CryptoJS.enc.Base64.stringify(source);
-
   // Remove padding equal characters
   encodedSource = encodedSource.replace(/=+$/, '');
-
   // Replace characters according to base64url specifications
   encodedSource = encodedSource.replace(/\+/g, '-');
   encodedSource = encodedSource.replace(/\//g, '_');
-
   return encodedSource;
 }
-
 function getResultMessage(errorCode, devMsg)
 {
 	var commonResponse = { resultCode: null, developerMessage: devMsg, userMessage: null, moreInfo:null };
@@ -499,7 +466,6 @@ function getResultMessage(errorCode, devMsg)
 	}
 	return commonResponse;
 }
-
 	</script>
 	
 </body>
