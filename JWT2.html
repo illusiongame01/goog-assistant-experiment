@@ -38,8 +38,7 @@
 		});
 		function loginEvent()
 		{
-		    var resp = loginB2C();
-			console.log(JSON.stringify(resp))
+		    var resp = loginB2C();			
 		    $('#text_app').html(JSON.stringify(resp));
 		}
 		
@@ -133,7 +132,7 @@ function appAuthen(q,urlRegister)
 	requestModel["ptsAppEnvironmentType"] = ptsAppEnvironmentType;
 	requestModel["clientId"] = clientId;
 	requestModel["platform"] = platform;
-	console.log(obj.privateId);
+	console.log('Privateid :'+obj.privateId);
     /*try
     {
         var requestjqXHR = $.ajax({
