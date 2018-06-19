@@ -39,6 +39,7 @@
 		function loginEvent()
 		{
 		    var resp = loginB2C();
+			console.log(JSON.stringify(resp))
 		    $('#text_app').html(JSON.stringify(resp));
 		}
 		
