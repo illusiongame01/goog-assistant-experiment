@@ -72,8 +72,8 @@ function loginB2C()
         return getResultMessage(90004, "[Fungus] (LoginB2C) Invalid Parameter");
     }
     //var link_srfp = "https://pantry-srfp.mimotech.org/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);
-	//var link_srfp = "http://iot-srf.ais.co.th:8080/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
-	var link_srfp = "http://10.137.16.40:8080/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
+	var link_srfp = "http://iot-srf.ais.co.th:8080/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
+	//var link_srfp = "http://10.137.16.40:8080/" + encodeURIComponent(clientId) + "?redirect_uri=" + encodeURIComponent(redirect_uri);	
 	location.href = link_srfp;
 }
 function appAuthen(q,urlRegister)
