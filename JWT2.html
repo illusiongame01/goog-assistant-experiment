@@ -133,7 +133,8 @@ function appAuthen(q,urlRegister)
 	requestModel["ptsAppEnvironmentType"] = ptsAppEnvironmentType;
 	requestModel["clientId"] = clientId;
 	requestModel["platform"] = platform;
-    try
+	console.log(obj.privateId);
+    /*try
     {
         var requestjqXHR = $.ajax({
             //url: 'appAuthen.php',
@@ -242,7 +243,7 @@ function appAuthen(q,urlRegister)
     catch(e)
     {
         return getResultMessage(90099, "Unknown Error");
-    }
+    }*/
 }
 function IsJsonString(str) {
     try {
