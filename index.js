@@ -83,8 +83,8 @@ app.post('/', (req, res) => {
     function welcome2(agent,res) {  
         //  res.sendFile( __dirname + "/ss.html" );
          agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
-        
-       
+        res.redirect("https://hellworldmyproject.herokuapp.com/");
+        res.sendFile( __dirname + "/ss.html" );
     }
     
  
