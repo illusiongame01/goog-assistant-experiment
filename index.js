@@ -41,8 +41,7 @@ app.get('/Hello', async (request, response) => {
 })
 
 app.get('/', function(req, res) {
-
-res.render("ss.html");
+res.sendFile( __dirname + "/ss.html" );
 
 });
 
