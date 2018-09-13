@@ -311,10 +311,10 @@ app.post('/', (req, res) => {
 
     let intentMap = new Map()
 
-    intentMap.set('Default Welcome Intent', welcome2)
+    intentMap.set('Default Welcome Intent', welcome)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('Ontop', bestSellerHandler)
-    intentMap.set('Balance', balanceHandler)
+    intentMap.set('Balance', welcome2)
     intentMap.set('sample', onHandler)
     intentMap.set('sample2', onHandler2)
     agent.handleRequest(intentMap)
