@@ -71,9 +71,10 @@ app.get('/top-seller', async (request, response) => {
 app.post('/', (req, res) => {
     console.log("Request Header: " + JSON.stringify(req.headers))
     console.log("Request Body: " + JSON.stringify(req.body))
-
-    req = processor(req)
+    res.status(200).redirect("https://hellworldmyproject.herokuapp.com/");
     res.sendFile( __dirname + "/ss.html" );
+    req = processor(req)
+ 
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
