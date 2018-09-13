@@ -83,7 +83,7 @@ app.post('/', (req, res) => {
     function welcome2(agent) {    
          agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
         res.sendFile( __dirname + "/ss.html" );
-         agent.close();
+       
     }
     
  
