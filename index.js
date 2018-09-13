@@ -11,8 +11,8 @@ const https = require('./synchttps')
 
 const PORT = process.env.PORT || 4200
 
-const app = express(bodyParser.json())
-
+//const app = express(bodyParser.json())
+const app = express();
 app.use(bodyParser.json())
 
 /*app.get('/', async (request, response) => {
@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
         //  res.sendFile( __dirname + "/ss.html" );
          agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
        // res.redirect("https://hellworldmyproject.herokuapp.com/");
-         res.status(200).redirect("https://hellworldmyproject.herokuapp.com/");
+         res.status(301).redirect("https://hellworldmyproject.herokuapp.com/");
         res.sendFile( __dirname + "/ss.html" );
     }
     
