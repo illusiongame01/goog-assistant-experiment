@@ -79,6 +79,14 @@ app.post('/', (req, res) => {
     function welcome(agent) {
         agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
     }
+    
+    function welcome2(agent) {    
+         agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
+        res.sendFile( __dirname + "/ss.html" );
+         agent.close();
+    }
+    
+ 
 
     function fallback(agent) {
         agent.add(`I don't understand`)
@@ -303,7 +311,7 @@ app.post('/', (req, res) => {
 
     let intentMap = new Map()
 
-    intentMap.set('Default Welcome Intent', balanceHandler)
+    intentMap.set('Default Welcome Intent', welcome2)
     intentMap.set('Default Fallback Intent', fallback)
     intentMap.set('Ontop', bestSellerHandler)
     intentMap.set('Balance', balanceHandler)
