@@ -15,7 +15,7 @@ const app = express(bodyParser.json())
 
 app.use(bodyParser.json())
 
-app.get('/', async (request, response) => {
+/*app.get('/', async (request, response) => {
     let retJSON = await https.getJSON({
             host: '110.49.202.87',
             port: 8443,
@@ -26,7 +26,7 @@ app.get('/', async (request, response) => {
      })
     response.send(retJSON.menu.packages.packageList[0])
     response.end()
-})
+})*/
 app.get('/Hello', async (request, response) => {
     let retJSON = await https.getJSON({
         host: '110.49.202.87',
@@ -39,6 +39,12 @@ app.get('/Hello', async (request, response) => {
     response.send(retJSON)
     response.end()
 })
+
+app.get('/', function(req, res) {
+
+res.render("ss.html");
+
+});
 
 app.get('/top-seller', async (request, response) => {
     await https.get({
