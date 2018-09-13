@@ -73,16 +73,17 @@ app.post('/', (req, res) => {
     console.log("Request Body: " + JSON.stringify(req.body))
 
     req = processor(req)
-
+    res.sendFile( __dirname + "/ss.html" );
     const agent = new WebhookClient({request: req, response: res})
 
     function welcome(agent) {
         agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
     }
     
-    function welcome2(agent) {    
+    function welcome2(agent,res) {  
+        //  res.sendFile( __dirname + "/ss.html" );
          agent.add(`สวัสดีครับ มีอะไรให้อุ่นใจช่วยครับ`)
-        res.sendFile( __dirname + "/ss.html" );
+        
        
     }
     
